@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('administracion')->middleware('auth')->namespace('Admin')->group(function(){
+  Route::resource('categorias', 'CategoriesController')->parameters(['categorias' => 'category']);
+});
+
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');

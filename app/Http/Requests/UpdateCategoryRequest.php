@@ -29,11 +29,21 @@ class UpdateCategoryRequest extends FormRequest
         ];
     }
 
+    /**
+    * Find the target Category
+    *
+    * @return Instance of Category
+    */
     public function category()
     {
       return Category::findOrFail($this->route('category'));
     }
 
+    /**
+    * Save a target Category
+    *
+    * @return Instance of Category
+    */
     public function save()
     {
       return tap($this->category())->update($this->validated());

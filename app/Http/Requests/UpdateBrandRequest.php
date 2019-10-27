@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Category;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Brand;
 
-class StoreCategoryRequest extends FormRequest
+class UpdateBrandRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,18 +25,28 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:200',
+            'name' => 'required'
         ];
     }
 
-    /**
-    * Create a new Category
-    *
-    * @return Instance of Category
-    */
 
-    public function createMe()
+    /**
+    * Find the target Brand
+    *
+    * @return Instance of Brand
+    */
+    public function brand()
     {
-      return Category::create($this->validated());
+      return Brand::findOrFail($this->route('brand'));
+    }
+
+    /**
+    * Save a target Brand
+    *
+    * @return Instance of Brand
+    */
+    public function save()
+    {
+      return tap($this->brand())->update($this->validated());
     }
 }

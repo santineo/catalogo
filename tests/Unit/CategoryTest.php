@@ -53,4 +53,14 @@ class CategoryTest extends TestCase
     $this->assertEquals($child1->slug, $child2->slug);
   }
 
+  /** @test **/
+  public function category_has_many_products()
+  {
+    $category = factory('App\Category')->create();
+    $category->products()->createMany(
+        factory('App\Product', 3)->make(['category_id' => null])->toArray()
+      );
+
+    $this->assertCount(3, $category->products->toArray());
+  }
 }

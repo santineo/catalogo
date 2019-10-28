@@ -2,23 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
 use App\Http\Controllers\Controller;
+use App\Product;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class ProductsController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +15,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        return view('admin.products.index');
     }
 
     /**
@@ -36,7 +25,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-      return view('admin.categories.create');
+        return view('admin.products.create');
     }
 
     /**
@@ -47,58 +36,58 @@ class CategoriesController extends Controller
      */
     public function store()
     {
-      $category = Category::create($this->validateRequest());
+      $product = Product::create($this->validateRequest());
 
-      return redirect('/administracion/categorias')->with(['info' => "Se ha creado la categoría {$category->name}"]);
+        return redirect("{$product->path()}/editar")->with(['info' => 'Se ha guardado con éxito.']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Product $product)
     {
-        return view('admin.categories.show', compact('category'));
+        return view('admin.products.show', compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Product $product)
     {
-      return view('admin.categories.edit', compact('category'));
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Category $category)
+    public function update(Product $product)
     {
-        $category->update($this->validateRequest());
-        
-        return redirect('/administracion/categorias')->with(['info' => "Se ha guardado la categoría {$category->name}"]);
+      $product->update($this->validateRequest());
+
+      return back()->with(['info' => 'Se ha guardado con éxito.']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Product $product)
     {
-        $category->delete();
+        $product->delete();
 
-        return redirect('/administracion/categorias')->with(['info' => "Se ha eliminado la categoría {$category->name}"]);
+        return redirect('/administracion/productos')->with(['info' => "Se ha eliminado el producto {$product->title}"]);
     }
 
     /**
@@ -109,7 +98,12 @@ class CategoriesController extends Controller
     public function validateRequest()
     {
       return request()->validate([
-        'name' => 'required|max:200',
+        'title' => 'required|max:150',
+        'description' => 'required',
+        'published' => 'sometimes',
+        'price' => 'required|numeric|min:0|not_in:0',
+        'category_id' => 'required|exists:categories,id',
+        'brand_id' => 'nullable|exists:brands,id',
       ]);
     }
 }

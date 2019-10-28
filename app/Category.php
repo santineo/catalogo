@@ -68,4 +68,14 @@ class Category extends Model
     {
       return $this->hasMany('App\Category', 'parent_id');
     }
+
+    /**
+     * Relationship with products
+     *
+     * @return collection of Products
+     */
+    public function products()
+    {
+      return $this->hasMany('App\Product');
+    }
 }

@@ -7,32 +7,43 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Brand extends Model
 {
-      use Sluggable;
+    use Sluggable;
 
-      protected $fillable = ['name'];
+    protected $fillable = ['name'];
 
-      /**
-       * Return the sluggable configuration array for this model.
-       *
-       * @return array
-       */
-      public function sluggable()
-      {
-          return [
-              'slug' => [
-                  'source' => 'name'
-              ]
-          ];
-      }
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
 
-      /**
-       * Return Admin Brand path
-       *
-       * @return string
-       */
-      public function path()
-      {
-        return "/administracion/marcas/{$this->id}";
-      }
+    /**
+     * Return Admin Brand path
+     *
+     * @return string
+     */
+    public function path()
+    {
+      return "/administracion/marcas/{$this->id}";
+    }
+
+    /**
+     * Relationship with products
+     *
+     * @return collection of Products
+     */
+    public function products()
+    {
+      return $this->hasMany('App\Product');
+    }
+
 }

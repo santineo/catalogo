@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Brand;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreBrandRequest;
-use App\Http\Requests\UpdateBrandRequest;
 
 class BrandsController extends Controller
 {
@@ -36,11 +34,11 @@ class BrandsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBrandRequest $request)
+    public function store()
     {
-        $brand = $request->createMe();
+        $brand = Brand::create($this->validateRequest());
 
-        return redirect('/administracion/marcas')->with(["Se ha creado la marca {$brand->name}"]);
+        return redirect('/administracion/marcas')->with(['info' => "Se ha creado la marca {$brand->name}"]);
     }
 
     /**
@@ -72,11 +70,11 @@ class BrandsController extends Controller
      * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBrandRequest $request)
+    public function update(Brand $brand)
     {
-        $brand = $request->save();
+        $brand->update($this->validateRequest());
 
-        return redirect('/administracion/marcas')->with(["Se ha guardado la marca {$brand->name}"]);
+        return redirect('/administracion/marcas')->with(['info' => "Se ha guardado la marca {$brand->name}"]);
     }
 
     /**
@@ -89,6 +87,18 @@ class BrandsController extends Controller
     {
       $brand->delete();
 
-      return redirect('/administracion/marcas')->with("Se ha eliminado la marca {$brand->name}");
+      return redirect('/administracion/marcas')->with(['info' => "Se ha eliminado la marca {$brand->name}"]);
+    }
+
+    /**
+     * Validate requested files
+     *
+     * @return array
+     */
+    public function validateRequest()
+    {
+      return request()->validate([
+          'name' => 'required'
+      ]);
     }
 }

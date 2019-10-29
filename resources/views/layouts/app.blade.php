@@ -27,14 +27,14 @@
 
 
       <sidebar class="sidebar bg-dark text-light pt-3">
-        <a class="text-light h2 font-weight-bold text-uppercase pl-4" href="{{ url('/') }}">
+        <a class="text-light h3 font-weight-bold text-uppercase pl-4" href="{{ url('/') }}">
             {{ config('app.name', 'Catalogo') }}
         </a>
         <ul class="list-unstyled mt-5">
-          <li class="py-3 pl-4 border-top"><a class="d-block text-light text-uppercase font-weight-bold" href="/administracion"><i class="fas fa-home pr-3"></i>Dashboard</a></li>
-          <li class="py-3 pl-4 border-top"><a class="d-block text-light text-uppercase font-weight-bold" href="{{ route('productos.index') }}"><i class="fab fa-product-hunt pr-3"></i>Productos</a></li>
-          <li class="py-3 pl-4 border-top"><a class="d-block text-light text-uppercase font-weight-bold" href="{{ route('marcas.index') }}"><i class="fas fa-trademark pr-3"></i>Marcas</a></li>
-          <li class="py-3 pl-4 border-top border-bottom"><a class="d-block text-light text-uppercase font-weight-bold" href="{{ route('categorias.index') }}"><i class="far fa-list-alt pr-3"></i>Categorías</a></li>
+          <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-bold" href="/administracion"><i class="fas fa-home pr-3"></i>Dashboard</a></li>
+          <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-bold" href="{{ route('productos.index') }}"><i class="fab fa-product-hunt pr-3"></i>Productos</a></li>
+          <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-bold" href="{{ route('marcas.index') }}"><i class="fas fa-trademark pr-3"></i>Marcas</a></li>
+          <li class="py-3 pl-4 border-top border-secondary border-bottom"><a class="d-block text-light text-uppercase font-weight-bold" href="{{ route('categorias.index') }}"><i class="far fa-list-alt pr-3"></i>Categorías</a></li>
         </ul>
       </sidebar>
 

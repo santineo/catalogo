@@ -9,7 +9,7 @@ class Product extends Model
 {
     use Sluggable;
 
-    protected $guarded = [];
+    protected $guarded = ['uploads'];
 
     /**
      * Return the sluggable configuration array for this model.
@@ -54,5 +54,15 @@ class Product extends Model
     public function category()
     {
       return $this->belongsTo('App\Category');
+    }
+
+    /**
+     * Relationship with uploads
+     *
+     * @return collection
+     */
+    public function uploads()
+    {
+      return $this->morphMany('App\Upload', 'uploadable')->orderBy('order', 'ASC');
     }
 }

@@ -4,6 +4,8 @@ namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -19,5 +21,11 @@ abstract class TestCase extends BaseTestCase
     protected function slug($sluggable, $class)
     {
       return SlugService::createSlug($class, 'slug', $sluggable, ['unique' => false]);
+    }
+
+    protected function getImage()
+    {
+      Storage::fake('avatars');
+      return UploadedFile::fake()->image('avatar.jpg');
     }
 }

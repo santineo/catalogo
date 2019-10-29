@@ -34,4 +34,15 @@ class ProductTest extends TestCase
     $this->assertInstanceOf('App\Category', $product->category);
   }
 
+  /** @test **/
+  public function has_morph_many_uploads()
+  {
+    $product = factory('App\Product')->create();
+    $upload = factory('App\Upload')->create();
+
+    $product->uploads()->save($upload);
+
+    $this->assertCount(1, $product->uploads->toArray());
+  }
+
 }

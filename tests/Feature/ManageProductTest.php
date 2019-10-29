@@ -47,16 +47,22 @@ class ManageProductTest extends TestCase
       'price' => 20.35,
       'published' => 0,
       'category_id' => factory('App\Category')->create()->id,
-      'brand_id' => factory('App\Brand')->create()->id
+      'brand_id' => factory('App\Brand')->create()->id,
+      'uploads' => factory('App\Upload',5)->create()->pluck('id'),
     ];
 
     $this->post('/administracion/productos', $attributes);
 
+    unset($attributes['uploads']);
+
     $product = Product::where($attributes)->first();
+
+    $this->assertInstanceOf('App\Product', $product);
+
+    $this->assertCount(5, $product->uploads->toArray());
 
     $this->assertEquals($this->slug($attributes['title'], Product::class), $product->slug);
 
-    $this->assertInstanceOf('App\Product', $product);
   }
 
   /** @test **/
@@ -73,10 +79,13 @@ class ManageProductTest extends TestCase
       'price' => 20.35,
       'published' => 1,
       'category_id' => factory('App\Category')->create()->id,
-      'brand_id' => factory('App\Brand')->create()->id
+      'brand_id' => factory('App\Brand')->create()->id,
+      'uploads' => factory('App\Upload',5)->create()->pluck('id'),
     ];
 
     $this->put($product->path(), $attributes)->assertRedirect("{$product->path()}/editar");
+
+    unset($attributes['uploads']);
 
     $this->assertDatabaseHas('products', $attributes);
   }

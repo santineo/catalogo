@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Upload;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -38,7 +39,9 @@ class ProductsController extends Controller
     {
       $product = Product::create($this->validateRequest());
 
-        return redirect("{$product->path()}/editar")->with(['info' => 'Se ha guardado con éxito.']);
+      $product->uploads()->saveMany($this->saveUploads());
+
+      return redirect("{$product->path()}/editar")->with(['info' => 'Se ha guardado con éxito.']);
     }
 
     /**
@@ -74,6 +77,9 @@ class ProductsController extends Controller
     {
       $product->update($this->validateRequest());
 
+      $product->uploads()->saveMany($this->saveUploads());
+      $product->uploads()->cleanNotIn(request('uploads')->toArray());
+
       return back()->with(['info' => 'Se ha guardado con éxito.']);
     }
 
@@ -91,6 +97,23 @@ class ProductsController extends Controller
     }
 
     /**
+     * Find Uploads and set order
+     *
+     * @return array
+     */
+    public function saveUploads()
+    {
+      $updateds = [];
+      foreach (request('uploads') as $order => $upload) {
+        $upload = Upload::find($upload);
+        if(!$upload) continue;
+        $upload->update(['order' => $order]);
+        $updateds[] = $upload;
+      }
+      return $updateds;
+    }
+
+    /**
      * Validate the requested attributes
      *
      * @return array
@@ -104,6 +127,7 @@ class ProductsController extends Controller
         'price' => 'required|numeric|min:0|not_in:0',
         'category_id' => 'required|exists:categories,id',
         'brand_id' => 'nullable|exists:brands,id',
+        'uploads.*' => 'required|exists:uploads,id',
       ]);
     }
 }

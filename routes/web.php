@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::prefix('administracion')->middleware('auth')->namespace('Admin')->group(function(){
+  Route::get('/', 'DashboardController@dashboard');
+
   Route::resource('categorias', 'CategoriesController')->parameters(['categorias' => 'category']);
   Route::resource('marcas', 'BrandsController')->parameters(['marcas' => 'brand']);
 

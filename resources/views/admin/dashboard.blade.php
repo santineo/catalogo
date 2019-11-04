@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class="card w-50 m-auto">
+  <div class="card w-50 mx-auto  my-5">
     <div class="card-header">
       Dashboard
     </div>

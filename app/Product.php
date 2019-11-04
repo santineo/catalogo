@@ -4,12 +4,25 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use App\Traits\Button;
 
 class Product extends Model
 {
-    use Sluggable;
+    use Sluggable, Button;
 
     protected $guarded = ['uploads'];
+
+
+
+    /**
+     * Get the route name
+     *
+     * @return string
+     */
+    public function getRouteName()
+    {
+      return 'productos';
+    }
 
     /**
      * Return the sluggable configuration array for this model.

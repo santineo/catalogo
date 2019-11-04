@@ -19,6 +19,15 @@ class ProductTest extends TestCase
   }
 
   /** @test **/
+  public function product_has_trait_buttons()
+  {
+    $product = factory('App\Product')->create();
+
+    $this->assertStringContainsString(route("{$product->getRouteName()}.edit", $product->id), $product->edit_button);
+    $this->assertStringContainsString(route("{$product->getRouteName()}.destroy", $product->id), $product->delete_button);
+  }
+
+  /** @test **/
   public function can_belongs_to_a_brand()
   {
     $product = factory('App\Product')->create();

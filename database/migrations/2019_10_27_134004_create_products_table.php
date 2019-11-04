@@ -21,10 +21,10 @@ class CreateProductsTable extends Migration
             $table->float('price', 8, 2);
             $table->boolean('published')->default(0);
 
-            $table->unsignedInteger('category_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
 
-            $table->unsignedInteger('brand_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->timestamps();
         });

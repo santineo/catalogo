@@ -26,7 +26,7 @@
     <div class="wrapper d-flex w-100">
 
       @auth
-      <sidebar class="sidebar bg-dark text-light pt-3">
+      <aside class="sidebar bg-dark text-light pt-3">
         <a class="text-light h3 font-weight-semibold text-uppercase pl-4" href="{{ url('/') }}">
             {{ config('app.name', 'Catalogo') }}
         </a>
@@ -36,7 +36,7 @@
           <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('marcas.index') }}"><i class="fas fa-trademark pr-3"></i>Marcas</a></li>
           <li class="py-3 pl-4 border-top border-secondary border-bottom"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('categorias.index') }}"><i class="far fa-list-alt pr-3"></i>Categorías</a></li>
         </ul>
-      </sidebar>
+      </aside>
     @endauth
 
         <main class="main w-100">
@@ -48,6 +48,7 @@
 
     </div>
 
+    <modal-confirm></modal-confirm>
   </div>
 </body>
 </html>

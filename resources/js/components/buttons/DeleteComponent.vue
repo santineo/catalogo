@@ -1,7 +1,8 @@
 <template>
-<form class="" :action="url" method="post">
+<form :action="url" method="post" ref="form">
   <input type="hidden" name="_token" :value="token">
-  <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+  <input name="_method" type="hidden" value="DELETE">
+  <button type="button" class="btn btn-sm btn-danger" @click.prevent="confirm()">Eliminar</button>
 </form>
 </template>
 
@@ -12,9 +13,14 @@ export default {
     return {
       token: csrf,
     }
+  },
+  methods: {
+    confirm(){
+      Modal.delete(this.submit);
+    },
+    submit(){
+      this.$refs.form.submit();
+    }
   }
 }
 </script>
-
-<style lang="css">
-</style>

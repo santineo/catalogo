@@ -14,7 +14,7 @@
 
     @if($values->count())
     {{-- Table --}}
-    <table class="table mt-4">
+    <table class="table table-striped table-bordered mt-4">
 
       <thead class="thead-dark">
         <tr>

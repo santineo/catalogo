@@ -5,12 +5,23 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Builder;
+use App\Traits\Button;
 
 class Category extends Model
 {
-    use Sluggable;
+    use Sluggable, Button;
 
     protected $fillable = ['name'];
+
+    /**
+     * Get the route name
+     *
+     * @return string
+     */
+    public function getRouteName()
+    {
+      return 'categorias';
+    }
 
     /**
      * Return the sluggable configuration array for this model.
@@ -37,6 +48,16 @@ class Category extends Model
     public function scopeWithUniqueSlugConstraints(Builder $query, Model $model, $attribute, $config, $slug)
     {
         $query->where('slug', $slug)->where('parent_id', $model->parent_id);
+    }
+
+    /**
+     * Product Counts
+     *
+     * @return integer
+     */
+    public function getProductsCountAttribute()
+    {
+      return $this->products->count();
     }
 
     /**
@@ -78,4 +99,5 @@ class Category extends Model
     {
       return $this->hasMany('App\Product');
     }
+
 }

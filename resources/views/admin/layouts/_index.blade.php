@@ -1,3 +1,10 @@
+@if (session('info'))
+  <div class="alert alert-{{ session('alert') ?: 'info' }} mx-4">
+    {!! session('info') !!}
+  </div>
+@endif
+
+
 <div class="card mx-4 rounded-0">
   <div class="card-body">
     <div class="title">{{ $title }}</div>

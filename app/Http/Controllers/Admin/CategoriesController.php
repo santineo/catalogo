@@ -84,7 +84,7 @@ class CategoriesController extends Controller
     public function update(Category $category)
     {
         $category->update($this->validateRequest());
-        
+
         return redirect('/administracion/categorias')->with(['info' => "Se ha guardado la categoría {$category->name}"]);
     }
 
@@ -96,6 +96,7 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
+        if($category->products->count()) return back()->with(['info' => 'No se puede eliminar la marca si tiene marcas asignados.', 'alert' => 'danger']);
         $category->delete();
 
         return redirect('/administracion/categorias')->with(['info' => "Se ha eliminado la categoría {$category->name}"]);

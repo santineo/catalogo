@@ -28,4 +28,10 @@ abstract class TestCase extends BaseTestCase
       Storage::fake('avatars');
       return UploadedFile::fake()->image('avatar.jpg');
     }
+
+    protected function hasTraitButton($model)
+    {
+      $this->assertStringContainsString(route("{$model->getRouteName()}.edit", $model->id), $model->edit_button);
+      $this->assertStringContainsString(route("{$model->getRouteName()}.destroy", $model->id), $model->delete_button);
+    }
 }

@@ -78,4 +78,6 @@ class ManageBrandTest extends TestCase
       $this->post('/administracion/marcas', [])->assertSessionHasErrors('name');
       $this->put($brand->path(), [])->assertSessionHasErrors('name');
     }
+
+
 }

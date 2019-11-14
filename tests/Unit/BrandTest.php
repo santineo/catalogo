@@ -18,13 +18,31 @@ class BrandTest extends TestCase
   }
 
   /** @test **/
+  public function brand_has_trait_buttons()
+  {
+    $brand = factory('App\Brand')->create();
+    $this->hasTraitButton($brand);
+  }
+
+  /** @test **/
   public function brand_has_many_products()
   {
     $brand = factory('App\Brand')->create();
     $brand->products()->createMany(
-        factory('App\Product', 3)->make(['brand_id' => null])->toArray()
-      );
+      factory('App\Product', 3)->make(['brand_id' => null])->toArray()
+    );
 
     $this->assertCount(3, $brand->products->toArray());
+  }
+
+  /** @test **/
+  public function brand_has_a_count_of_his_products()
+  {
+    $brand = factory('App\Brand')->create();
+    $brand->products()->createMany(
+      factory('App\Product', 3)->make(['brand_id' => null])->toArray()
+    );
+
+    $this->assertEquals(3, $brand->products_count);
   }
 }

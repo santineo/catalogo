@@ -18,6 +18,13 @@ class CategoryTest extends TestCase
   }
 
   /** @test **/
+  public function category_has_trait_buttons()
+  {
+    $category = factory('App\Category')->create();
+    $this->hasTraitButton($category);
+  }
+
+  /** @test **/
   public function category_can_has_related_with_self()
   {
     $parent = factory('App\Category')->create();
@@ -58,9 +65,20 @@ class CategoryTest extends TestCase
   {
     $category = factory('App\Category')->create();
     $category->products()->createMany(
-        factory('App\Product', 3)->make(['category_id' => null])->toArray()
-      );
+      factory('App\Product', 3)->make(['category_id' => null])->toArray()
+    );
 
     $this->assertCount(3, $category->products->toArray());
+  }
+
+  /** @test **/
+  public function category_has_a_count_of_his_products()
+  {
+    $category = factory('App\Category')->create();
+    $category->products()->createMany(
+      factory('App\Product', 3)->make(['category_id' => null])->toArray()
+    );
+
+    $this->assertEquals(3, $category->products_count);
   }
 }

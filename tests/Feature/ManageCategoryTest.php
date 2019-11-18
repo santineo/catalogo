@@ -87,4 +87,15 @@ class ManageCategoryTest extends TestCase
     $this->put($category->path(), [])->assertSessionHasErrors('name');
   }
 
+  /** @test **/
+  public function a_user_cannot_delete_a_category_if_has_products()
+  {
+    $this->signIn();
+    $category = factory('App\Category')->create();
+    $category->products()->createMany(
+      factory('App\Product', 1)->make(['category_id' => null])->toArray()
+    );
+
+    $this->delete($category->path())->assertRedirect('/administracion/categorias')->assertSessionHasErrors('product_assigned');
+  }
 }

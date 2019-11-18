@@ -85,7 +85,7 @@ class BrandsController extends Controller
      */
     public function destroy(Brand $brand)
     {
-      if($brand->products->count()) return back()->with(['info' => 'No se puede eliminar la marca si tiene productos asignados.', 'alert' => 'danger']);
+      if($brand->products->count()) return redirect('/administracion/marcas')->withErrors(['product_assigned' => 'No se puede eliminar la marca si tiene productos asignados.']);
       $brand->delete();
 
       return redirect('/administracion/marcas')->with(['info' => "Se ha eliminado la marca {$brand->name}"]);

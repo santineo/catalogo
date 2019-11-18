@@ -59,25 +59,35 @@ class ManageBrandTest extends TestCase
     $this->assertDatabaseHas('brands', $attributes);
   }
 
-    /** @test **/
-    public function a_user_can_delete_a_brand()
-    {
-      $this->signIn();
-      $brand = factory('App\Brand')->create();
+  /** @test **/
+  public function a_user_can_delete_a_brand()
+  {
+    $this->signIn();
+    $brand = factory('App\Brand')->create();
 
-      $this->delete($brand->path())->assertRedirect('/administracion/marcas');
-      $this->assertDatabaseMissing('brands', ['id' => $brand->id]);
-    }
+    $this->delete($brand->path())->assertRedirect('/administracion/marcas');
+    $this->assertDatabaseMissing('brands', ['id' => $brand->id]);
+  }
 
-    /** @test **/
-    public function a_brand_requires_a_name()
-    {
-      $this->signIn();
-      $brand = factory('App\Brand')->create();
+  /** @test **/
+  public function a_brand_requires_a_name()
+  {
+    $this->signIn();
+    $brand = factory('App\Brand')->create();
 
-      $this->post('/administracion/marcas', [])->assertSessionHasErrors('name');
-      $this->put($brand->path(), [])->assertSessionHasErrors('name');
-    }
+    $this->post('/administracion/marcas', [])->assertSessionHasErrors('name');
+    $this->put($brand->path(), [])->assertSessionHasErrors('name');
+  }
 
+  /** @test **/
+  public function a_user_cannot_delete_a_brand_if_has_products()
+  {
+    $this->signIn();
+    $brand = factory('App\Brand')->create();
+    $brand->products()->createMany(
+      factory('App\Product', 1)->make(['brand_id' => null])->toArray()
+    );
 
+    $this->delete($brand->path())->assertRedirect('/administracion/marcas')->assertSessionHasErrors('product_assigned');
+  }
 }

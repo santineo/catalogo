@@ -4,6 +4,14 @@
   </div>
 @endif
 
+@if($errors->any())
+  <div class="alert alert-danger mx-4">
+    @foreach ($errors as $key => $error)
+      <p class="p-0">{!! $error !!}</p>
+    @endforeach
+  </div>
+@endif
+
 
 <div class="card mx-4 rounded-0">
   <div class="card-body">

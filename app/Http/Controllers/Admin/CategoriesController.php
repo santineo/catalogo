@@ -96,7 +96,7 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        if($category->products->count()) return back()->with(['info' => 'No se puede eliminar la marca si tiene marcas asignados.', 'alert' => 'danger']);
+        if($category->products->count()) return redirect('/administracion/categorias')->withErrors(['product_assigned' => 'No se puede eliminar la categoría si tiene productos asignados.']);
         $category->delete();
 
         return redirect('/administracion/categorias')->with(['info' => "Se ha eliminado la categoría {$category->name}"]);

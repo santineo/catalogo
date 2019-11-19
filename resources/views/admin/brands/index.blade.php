@@ -10,6 +10,7 @@
 
   @include('admin.layouts._index', [
     'title' => 'Marcas',
+    'crear' => 'Marca',
     'route' => 'marcas',
     'values' => App\Brand::all(),
     'attributes' => [

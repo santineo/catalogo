@@ -1,21 +1,13 @@
-@if (session('info'))
-  <div class="alert alert-{{ session('alert') ?: 'info' }} mx-4">
-    {!! session('info') !!}
-  </div>
-@endif
-
-@if($errors->any())
-  <div class="alert alert-danger mx-4">
-    @foreach ($errors as $key => $error)
-      <p class="p-0">{!! $error !!}</p>
-    @endforeach
-  </div>
-@endif
-
+@include('admin.partials._alert')
 
 <div class="card mx-4 rounded-0">
   <div class="card-body">
-    <div class="title">{{ $title }}</div>
+    <div class="d-flex align-items-center">
+      <div class="title mr-auto">{{ $title }}</div>
+      @if (isset($crear))
+        <a href="{{ route("{$route}.create") }}" class="btn btn-info text-white">Crear {{ $crear }}</a>
+      @endif
+    </div>
 
     {{-- Filters --}}
     <form class="form-inline mt-3" action="{{ route("{$route}.index") }}" method="get">
@@ -28,31 +20,31 @@
     </form>
 
     @if($values->count())
-    {{-- Table --}}
-    <table class="table table-striped table-bordered mt-4">
+      {{-- Table --}}
+      <table class="table table-striped table-bordered mt-4">
 
-      <thead class="thead-dark">
-        <tr>
-          @foreach ($attributes as $attribute)
-            <th scope="col">{{ $attribute['label'] }}</th>
-          @endforeach
-        </tr>
-      </thead>
+        <thead class="thead-dark">
+          <tr>
+            @foreach ($attributes as $attribute)
+              <th scope="col">{{ $attribute['label'] }}</th>
+            @endforeach
+          </tr>
+        </thead>
 
-      <tbody>
-        @foreach ($values as $value)
-        <tr>
-          @foreach ($attributes as $attribute)
-            <td>{!! $value->{$attribute['slug']} !!}</td>
+        <tbody>
+          @foreach ($values as $value)
+            <tr>
+              @foreach ($attributes as $attribute)
+                <td>{!! $value->{$attribute['slug']} !!}</td>
+              @endforeach
+            </tr>
           @endforeach
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-  @else
-    <div class="alert alert-info  mt-4">
-      No se han encontrado {{ $title }}
-    </div>
-  @endif
+        </tbody>
+      </table>
+    @else
+      <div class="alert alert-info  mt-4">
+        No se han encontrado {{ $title }}
+      </div>
+    @endif
   </div>
 </div>

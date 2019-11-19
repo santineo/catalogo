@@ -7,9 +7,10 @@
       ['active' => true, 'label' => 'Productos']
     ]
   ])
-  
+
   @include('admin.layouts._index', [
     'title' => 'Productos',
+    'crear' => 'Producto',
     'route' => 'productos',
     'values' => App\Product::all(),
     'attributes' => [

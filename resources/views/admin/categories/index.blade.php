@@ -10,6 +10,7 @@
 
   @include('admin.layouts._index', [
     'title' => 'Categorías',
+    'crear' => 'Categoría',
     'route' => 'categorias',
     'values' => App\Category::all(),
     'attributes' => [

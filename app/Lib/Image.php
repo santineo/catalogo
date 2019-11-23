@@ -36,7 +36,7 @@ class Image
    */
   public function store($path, $version = false)
   {
-    if($version) $this->setVersionSize($this->image, $version);
+    if($version) $this->setVersionSize($version);
     Storage::put($path, $this->image->encode($this->mime)->__toString());
   }
 

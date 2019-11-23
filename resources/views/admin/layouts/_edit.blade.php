@@ -8,7 +8,7 @@
       @csrf
       @method('PUT')
       @include($form)
-      <button type="submit" class="btn btn-success mt-2">Crear</button>
+      <button type="submit" class="btn btn-success mt-2">Guardar</button>
     </form>
   </div>
 </div>

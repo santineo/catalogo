@@ -112,8 +112,8 @@ class Upload extends Model
 
     // order from highest to lowest sizes
     $image->store($this->doPath());
-    $image->store($this->doPath('thumb'));
-    $image->store($this->doPath('small'));
+    $image->store($this->doPath('thumb'), 'thumb');
+    $image->store($this->doPath('small'), 'small');
   }
 
 

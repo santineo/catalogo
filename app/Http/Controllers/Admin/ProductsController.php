@@ -78,7 +78,7 @@ class ProductsController extends Controller
       $product->update($this->validateRequest());
 
       $product->uploads()->saveMany($this->saveUploads());
-      $product->uploads()->cleanNotIn(request('uploads')->toArray());
+      $product->uploads()->cleanNotIn(request('uploads'));
 
       return back()->with(['info' => 'Se ha guardado con éxito.']);
     }

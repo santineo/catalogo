@@ -12,7 +12,7 @@
     'title' => 'Productos',
     'crear' => 'Producto',
     'route' => 'productos',
-    'values' => App\Product::all(),
+    'values' => $products,
     'attributes' => [
       ['label' => 'Título', 'slug' => 'title'],
       ['label' => '', 'slug' => 'edit_button'],

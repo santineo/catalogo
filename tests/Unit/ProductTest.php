@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-// use App\Product;
+use App\Product;
 
 class ProductTest extends TestCase
 {
@@ -52,4 +52,16 @@ class ProductTest extends TestCase
     $this->assertCount(1, $product->uploads->toArray());
   }
 
+  /** @test **/
+  public function can_find_terms()
+  {
+    factory('App\Product')->create(['title' => 'Lorem ipsum dolo product']);
+    factory('App\Product')->create(['title' => 'A diferent product']);
+    factory('App\Product')->create(['title' => 'Another diferent product']);
+
+    $this->assertCount(1, Product::search('ipsum')->get());
+    $this->assertCount(2, Product::search('diferent')->get());
+    $this->assertCount(3, Product::search('product')->get());
+    $this->assertCount(3, Product::search(false)->get());
+  }
 }

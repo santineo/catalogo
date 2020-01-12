@@ -16,7 +16,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $products = Product::search(request('term'))->get();
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -103,7 +104,7 @@ class ProductsController extends Controller
     public function saveUploads()
     {
       $updateds = [];
-      foreach (request('uploads') as $order => $upload) {
+      foreach (request('uploads', []) as $order => $upload) {
         $upload = Upload::find($upload);
         if(!$upload) continue;
         $upload->update(['order' => $order]);

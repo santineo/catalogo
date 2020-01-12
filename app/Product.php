@@ -40,6 +40,18 @@ class Product extends Model
 
 
     /**
+     * Scope to search products by title
+     *
+     * @return Builder
+     */
+    public function scopeSearch($query, $term = false)
+    {
+      if(!$term) return $query;
+
+      return $query->where('title', 'like', '%' . $term . '%');
+    }
+
+    /**
      * Return Admin Product path
      *
      * @return string

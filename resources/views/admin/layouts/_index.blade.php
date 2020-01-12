@@ -13,7 +13,7 @@
     <form class="form-inline mt-3" action="{{ route("{$route}.index") }}" method="get">
       <div class="form-group mr-sm-3 mb-2">
         <label for="term" class="sr-only">Buscar</label>
-        <input type="text" class="form-control" id="term" placeholder="Término de Búsqueda...">
+        <input type="text" class="form-control" id="term" name="term" placeholder="Término de Búsqueda..." value="{{ request('term', '') }}">
       </div>
       <button type="submit" class="btn btn-primary mb-2 mr-2">Filtrar</button>
       <a href="{{ route("{$route}.index") }}" class="btn btn-success mb-2">Limpiar</a>

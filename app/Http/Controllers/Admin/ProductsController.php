@@ -76,7 +76,6 @@ class ProductsController extends Controller
     public function update(Product $product)
     {
       $product->update($this->validateRequest());
-
       $product->uploads()->saveMany($this->saveUploads());
       $product->uploads()->cleanNotIn(request('uploads'));
 

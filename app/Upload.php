@@ -27,9 +27,7 @@ class Upload extends Model
       Storage::delete([$item->doPath(), $item->doPath('thumb'), $item->doPath('small')]);
     });
 
-}
-
-
+  }
 
   /**
   *  Accesor to get upload original URL
@@ -62,12 +60,14 @@ class Upload extends Model
   }
 
   /**
-   * Remove all uploads where not in the array
-   *
-   * @return void
-   */
-  public function scopeCleanNotIn($query, array $ids)
+  * Remove all uploads where not in the array
+  *
+  * @return void
+  */
+  public function scopeCleanNotIn($query, $ids)
   {
+    if(!is_array($ids)) return $query;
+    
     return $query->whereNotIn('id', $ids)->delete();
   }
 

@@ -82,7 +82,7 @@ class ManageProductTest extends TestCase
       'brand_id' => factory('App\Brand')->create()->id,
       'uploads' => factory('App\Upload',5)->create()->pluck('id'),
     ];
-
+    
     $this->put($product->path(), $attributes)->assertRedirect("{$product->path()}/editar");
 
     unset($attributes['uploads']);

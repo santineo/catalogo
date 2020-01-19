@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Category;
 
 class CategoryTest extends TestCase
 {
@@ -80,5 +81,18 @@ class CategoryTest extends TestCase
     );
 
     $this->assertEquals(3, $category->products_count);
+  }
+
+  /** @test **/
+  public function can_find_terms()
+  {
+    factory('App\Category')->create(['name' => 'Lorem ipsum dolo category']);
+    factory('App\Category')->create(['name' => 'A diferent category']);
+    factory('App\Category')->create(['name' => 'Another diferent category']);
+
+    $this->assertCount(1, Category::search('ipsum')->get());
+    $this->assertCount(2, Category::search('diferent')->get());
+    $this->assertCount(3, Category::search('category')->get());
+    $this->assertCount(3, Category::search(false)->get());
   }
 }

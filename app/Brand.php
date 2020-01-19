@@ -37,6 +37,18 @@ class Brand extends Model
     }
 
     /**
+     * Scope to search products by title
+     *
+     * @return Builder
+     */
+    public function scopeSearch($query, $term = false)
+    {
+      if(!$term) return $query;
+
+      return $query->where('name', 'like', '%' . $term . '%');
+    }
+
+    /**
      * Product Counts
      *
      * @return integer

@@ -15,7 +15,8 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        return view('admin.brands.index');
+      $brands = Brand::search(request('term'))->get();
+      return view('admin.brands.index', compact('brands'));
     }
 
     /**

@@ -12,7 +12,7 @@
     'title' => 'Categorías',
     'crear' => 'Categoría',
     'route' => 'categorias',
-    'values' => App\Category::all(),
+    'values' => $categories,
     'attributes' => [
       ['label' => 'Nombre', 'slug' => 'name'],
       ['label' => 'Productos', 'slug' => 'products_count'],

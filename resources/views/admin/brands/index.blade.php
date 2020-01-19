@@ -12,7 +12,7 @@
     'title' => 'Marcas',
     'crear' => 'Marca',
     'route' => 'marcas',
-    'values' => App\Brand::all(),
+    'values' => $brands,
     'attributes' => [
       ['label' => 'Nombre', 'slug' => 'name'],
       ['label' => 'Productos', 'slug' => 'products_count'],

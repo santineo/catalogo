@@ -38,6 +38,19 @@ class Category extends Model
     }
 
     /**
+     * Scope to search products by title
+     *
+     * @return Builder
+     */
+    public function scopeSearch($query, $term = false)
+    {
+      if(!$term) return $query;
+
+      return $query->where('name', 'like', '%' . $term . '%');
+    }
+
+
+    /**
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param \Illuminate\Database\Eloquent\Model $model
      * @param string $attribute

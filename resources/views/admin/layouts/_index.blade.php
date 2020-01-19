@@ -18,10 +18,18 @@
       <button type="submit" class="btn btn-primary mb-2 mr-2">Filtrar</button>
       <a href="{{ route("{$route}.index") }}" class="btn btn-success mb-2">Limpiar</a>
     </form>
+    @if (request('term'))
+      <div class="alert alert-info d-inline-block p-2 mb-0">
+        Se han encontrado <span class="font-weight-bold">{{ $values->count() }}</span> {{ $title }} bajo el término de busqueda <span class="font-weight-bold">"{{ request('term') }}"</span>.
+      </div>
+    @endif
+    <div class="">
+
+    </div>
 
     @if($values->count())
       {{-- Table --}}
-      <table class="table table-striped table-bordered mt-4">
+      <table class="table table-striped table-bordered mt-2">
 
         <thead class="thead-dark">
           <tr>
@@ -42,7 +50,7 @@
         </tbody>
       </table>
     @else
-      <div class="alert alert-info  mt-4">
+      <div class="alert alert-warning  mt-4">
         No se han encontrado {{ $title }}
       </div>
     @endif

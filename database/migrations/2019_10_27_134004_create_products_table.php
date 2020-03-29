@@ -18,7 +18,10 @@ class CreateProductsTable extends Migration
             $table->string('title', 150);
             $table->string('slug', 200);
             $table->text('description');
+            $table->bigInteger('stock')->default(0);
+            $table->tinyInteger('selling_type')->default(1);
             $table->float('price', 8, 2);
+            $table->boolean('validate_stock')->default(0);
             $table->boolean('published')->default(0);
 
             $table->unsignedBigInteger('category_id')->nullable();

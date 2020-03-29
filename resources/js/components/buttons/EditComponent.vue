@@ -7,6 +7,3 @@ export default {
   props: ['url']
 }
 </script>
-
-<style lang="css">
-</style>

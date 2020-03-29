@@ -46,6 +46,9 @@ class ManageProductTest extends TestCase
       'description' => $this->faker->paragraph,
       'price' => 20.35,
       'published' => 0,
+      'stock' => rand(0,3000),
+      'validate_stock' => rand(0,1),
+      'selling_type' => rand(1,2),
       'category_id' => factory('App\Category')->create()->id,
       'brand_id' => factory('App\Brand')->create()->id,
       'uploads' => factory('App\Upload',5)->create()->pluck('id'),
@@ -78,11 +81,14 @@ class ManageProductTest extends TestCase
       'description' => 'Changed Description',
       'price' => 20.35,
       'published' => 1,
+      'stock' => rand(0,3000),
+      'validate_stock' => rand(0,1),
+      'selling_type' => rand(1,2),
       'category_id' => factory('App\Category')->create()->id,
       'brand_id' => factory('App\Brand')->create()->id,
       'uploads' => factory('App\Upload',5)->create()->pluck('id'),
     ];
-    
+
     $this->put($product->path(), $attributes)->assertRedirect("{$product->path()}/editar");
 
     unset($attributes['uploads']);
@@ -140,6 +146,26 @@ class ManageProductTest extends TestCase
     $attributes['price'] = 0;
     $this->post('/administracion/productos', $attributes)->assertSessionHasErrors('price');
 
+  }
+
+  /** @test **/
+  public function a_product_requires_a_valid_stock()
+  {
+    $this->signIn();
+
+    $attributes = factory('App\Product')->raw(['stock' => -1]);
+
+    $this->post('/administracion/productos', $attributes)->assertSessionHasErrors('stock');
+  }
+
+  /** @test **/
+  public function a_product_requires_a_valid_selling_type()
+  {
+    $this->signIn();
+
+    $attributes = factory('App\Product')->raw(['selling_type' => 3]);
+
+    $this->post('/administracion/productos', $attributes)->assertSessionHasErrors('selling_type');
   }
 
   /** @test **/

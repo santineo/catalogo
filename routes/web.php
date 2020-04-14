@@ -22,7 +22,12 @@ Route::prefix('administracion')->middleware('auth')->namespace('Admin')->group(f
   Route::resource('marcas', 'BrandsController')->parameters(['marcas' => 'brand']);
 
   Route::post('uploads', 'UploadsController@store');
+  Route::get('productos/fetch', 'ProductsController@getProducts');
   Route::resource('productos', 'ProductsController')->parameters(['productos' => 'product']);
+
+  Route::resource('pedidos', 'OrdersController')->except(['destroy'])->parameters(['pedidos' => 'order']);
+  Route::post('/pedidos/{order}/status', 'OrdersController@updateStatus');
+  Route::get('/pedidos/{order}/productos', 'OrdersController@getProducts');
 });
 
 Auth::routes(['register' => false]);

@@ -12,7 +12,7 @@ class Product extends Model
 
     protected $guarded = ['uploads'];
 
-
+    protected $appends = ['price_type', 'image'];
 
     /**
      * Get the route name
@@ -48,7 +48,7 @@ class Product extends Model
     {
       if(!$term) return $query;
 
-      return $query->where('title', 'like', '%' . $term . '%');
+      return $query->where('title', 'like', '%' . $term . '%')->orWhere('id', $term);
     }
 
     /**
@@ -59,6 +59,45 @@ class Product extends Model
     public function path()
     {
       return "/administracion/productos/{$this->id}";
+    }
+
+    /**
+     * Accesor to Selling Type Formatted
+     *
+     * @return string
+     */
+    public function getPriceTypeAttribute()
+    {
+      switch ($this->selling_type) {
+        case 1:
+          return 'Unidad';
+        break;
+
+        case 2:
+          return 'Kilo';
+        break;
+      }
+    }
+
+    /**
+     * Accesor to Get first upload
+     *
+     * @return Intance of Upload or null
+     */
+    public function getImageAttribute()
+    {
+      return $this->uploads->first();
+    }
+
+    /**
+     * Accesor to Order Stock Available
+     *
+     * @return int
+     */
+    public function getAvailableStockAttribute()
+    {
+      if(!$this->pivot) return $this->stock;
+      return $this->stock + $this->pivot->quantity;
     }
 
     /**

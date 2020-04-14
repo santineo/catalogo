@@ -85,7 +85,7 @@ class ManageBrandTest extends TestCase
     $this->signIn();
     $brand = factory('App\Brand')->create();
     $brand->products()->createMany(
-      factory('App\Product', 1)->make(['brand_id' => null])->toArray()
+      factory('App\Product', 1)->raw(['brand_id' => null])
     );
 
     $this->delete($brand->path())->assertRedirect('/administracion/marcas')->assertSessionHasErrors('product_assigned');

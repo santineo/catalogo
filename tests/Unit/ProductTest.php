@@ -53,7 +53,7 @@ class ProductTest extends TestCase
   }
 
   /** @test **/
-  public function can_find_terms()
+  public function can_find_terms_by_title()
   {
     factory('App\Product')->create(['title' => 'Lorem ipsum dolo product']);
     factory('App\Product')->create(['title' => 'A diferent product']);
@@ -63,5 +63,14 @@ class ProductTest extends TestCase
     $this->assertCount(2, Product::search('diferent')->get());
     $this->assertCount(3, Product::search('product')->get());
     $this->assertCount(3, Product::search(false)->get());
+  }
+
+  /** @test **/
+  public function can_find_terms_by_id()
+  {
+    factory('App\Product')->create();
+
+    $this->assertCount(1, Product::search(1)->get());
+    $this->assertCount(0, Product::search(2)->get());
   }
 }

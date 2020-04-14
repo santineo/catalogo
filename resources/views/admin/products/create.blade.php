@@ -5,7 +5,7 @@
   @include('admin.partials._breadcrumb', [
     'breadcrumbs' => [
       ['url' => route('productos.index'), 'label' => 'Productos'],
-      ['active' => true, 'label' => 'Nueva Producto']
+      ['active' => true, 'label' => 'Nuevo Producto']
     ]
   ])
 

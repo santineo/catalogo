@@ -25,12 +25,13 @@
 export default {
   data(){
     return {
-      Modal:Modal,
+      Modal,
     }
   },
   methods: {
     trigger(){
       Modal.callback();
+      Modal.close();
     }
   }
 }

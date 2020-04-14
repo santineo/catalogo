@@ -32,7 +32,7 @@ class ManageProductTest extends TestCase
     $product = factory('App\Product')->create();
 
     $this->get('/administracion/productos')->assertOk();
-    $this->get($product->path());
+    $this->get($product->path())->assertOk();
   }
 
   /** @test **/

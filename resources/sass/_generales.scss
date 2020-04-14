@@ -18,3 +18,28 @@ body{
 .font-weight-semibold{
   font-weight: 600;
 }
+
+.top-0{
+  top: 0;
+}
+
+.bottom-0{
+  bottom: 0;
+}
+
+.left-0{
+  left: 0;
+}
+
+.right-0{
+  right: 0;
+}
+
+.z-index-10{
+  z-index: 10;
+}
+
+// TRANSITIONS
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}

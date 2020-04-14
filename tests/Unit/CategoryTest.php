@@ -66,7 +66,7 @@ class CategoryTest extends TestCase
   {
     $category = factory('App\Category')->create();
     $category->products()->createMany(
-      factory('App\Product', 3)->make(['category_id' => null])->toArray()
+      factory('App\Product', 3)->raw(['category_id' => null])
     );
 
     $this->assertCount(3, $category->products->toArray());
@@ -77,7 +77,7 @@ class CategoryTest extends TestCase
   {
     $category = factory('App\Category')->create();
     $category->products()->createMany(
-      factory('App\Product', 3)->make(['category_id' => null])->toArray()
+      factory('App\Product', 3)->raw(['category_id' => null])
     );
 
     $this->assertEquals(3, $category->products_count);

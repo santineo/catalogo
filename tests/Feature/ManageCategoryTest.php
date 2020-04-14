@@ -93,7 +93,7 @@ class ManageCategoryTest extends TestCase
     $this->signIn();
     $category = factory('App\Category')->create();
     $category->products()->createMany(
-      factory('App\Product', 1)->make(['category_id' => null])->toArray()
+      factory('App\Product', 1)->raw(['category_id' => null])
     );
 
     $this->delete($category->path())->assertRedirect('/administracion/categorias')->assertSessionHasErrors('product_assigned');

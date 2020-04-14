@@ -13,9 +13,9 @@ $factory->define(Product::class, function (Faker $faker) {
         'description' => $faker->paragraph,
         'price' => $faker->randomFloat(2, 0, 10000),
         'published' => 0,
-        'stock' => rand(0,3000),
+        'stock' => 0,
         'selling_type' => rand(1,2),
-        'validate_stock' => rand(0,1),
+        'validate_stock' => 0,
         'category_id' => $category->id,
         'brand_id' => $brand->id,
     ];

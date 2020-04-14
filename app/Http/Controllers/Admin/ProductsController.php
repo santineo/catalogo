@@ -16,7 +16,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::search(request('term'))->get();
+        $products = Product::search(request('term'))->paginate(20);
         return view('admin.products.index', compact('products'));
     }
 
@@ -97,6 +97,17 @@ class ProductsController extends Controller
     }
 
     /**
+     * Retrieve Product List
+     *
+     * @json
+     */
+    public function getProducts()
+    {
+      $products = Product::search(request('term'))->take(30)->get();
+      return response()->json(compact('products'), 200);
+    }
+
+    /**
      * Find Uploads and set order
      *
      * @return array
@@ -104,8 +115,10 @@ class ProductsController extends Controller
     public function saveUploads()
     {
       $updateds = [];
-      foreach (request('uploads', []) as $order => $upload) {
-        $upload = Upload::find($upload);
+      $uploads = Upload::whereIn('id', request('uploads',[]))->get();
+
+      foreach (request('uploads', []) as $order => $uploadIdRequested) {
+        $upload = $uploads->firstWhere('id', $uploadIdRequested);
         if(!$upload) continue;
         $upload->update(['order' => $order]);
         $updateds[] = $upload;

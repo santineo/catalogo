@@ -5,7 +5,9 @@
  */
 
 require('./bootstrap');
+require('./events');
 window.Vue = require('vue');
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,6 +22,7 @@ window.Vue = require('vue');
 
 Vue.component('edit-button', require('./components/buttons/EditComponent.vue').default);
 Vue.component('delete-button', require('./components/buttons/DeleteComponent.vue').default);
+Vue.component('order-form', require('./components/OrderFormComponent.vue').default);
 Vue.component('modal-confirm', require('./components/ModalComponent.vue').default);
 Vue.component('errors', require('./components/ErrorsComponent.vue').default);
 Vue.component('image-input', require('./components/ImageInputComponent.vue').default);

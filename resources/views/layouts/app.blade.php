@@ -34,7 +34,8 @@
           <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-semibold" href="/administracion"><i class="fas fa-home pr-3"></i>Dashboard</a></li>
           <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('productos.index') }}"><i class="fab fa-product-hunt pr-3"></i>Productos</a></li>
           <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('marcas.index') }}"><i class="fas fa-trademark pr-3"></i>Marcas</a></li>
-          <li class="py-3 pl-4 border-top border-secondary border-bottom"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('categorias.index') }}"><i class="far fa-list-alt pr-3"></i>Categorías</a></li>
+          <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('categorias.index') }}"><i class="far fa-list-alt pr-3"></i>Categorías</a></li>
+          <li class="py-3 pl-4 border-top border-secondary border-bottom"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('pedidos.index') }}"><i class="fas fa-clipboard-list pr-3"></i>Pedidos</a></li>
         </ul>
       </aside>
     @endauth

@@ -29,6 +29,11 @@ abstract class TestCase extends BaseTestCase
       return UploadedFile::fake()->image('avatar.jpg');
     }
 
+    protected function getRandQuantity($type)
+    {
+      return rand(1, 10) * ($type == 1 ? 1 : 100);
+    }
+
     protected function hasTraitButton($model)
     {
       $this->assertStringContainsString(route("{$model->getRouteName()}.edit", $model->id), $model->edit_button);

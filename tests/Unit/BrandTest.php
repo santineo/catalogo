@@ -30,7 +30,7 @@ class BrandTest extends TestCase
   {
     $brand = factory('App\Brand')->create();
     $brand->products()->createMany(
-      factory('App\Product', 3)->make(['brand_id' => null])->toArray()
+      factory('App\Product', 3)->raw(['brand_id' => null])
     );
 
     $this->assertCount(3, $brand->products->toArray());
@@ -41,7 +41,7 @@ class BrandTest extends TestCase
   {
     $brand = factory('App\Brand')->create();
     $brand->products()->createMany(
-      factory('App\Product', 3)->make(['brand_id' => null])->toArray()
+      factory('App\Product', 3)->raw(['brand_id' => null])
     );
 
     $this->assertEquals(3, $brand->products_count);

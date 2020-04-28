@@ -6,7 +6,7 @@
 
 
   <div class="form-group col-sm-6">
-    <price-input :model_price="{{ isset($model) ? $model->price : old('price') }}" :model_selling_type="{{ isset($model) ? $model->selling_type : old('selling_type') }}"></price-input>
+    <price-input :model_price="{{ isset($model) ? $model->price : old('price', 0) }}" :model_selling_type="{{ isset($model) ? $model->selling_type : old('selling_type', 1) }}"></price-input>
   </div>
 
   <div class="form-group col-sm-6">
@@ -30,7 +30,7 @@
   </div>
 
   <div class="form-group col-sm-12">
-    <stock-input :model_stock="{{ isset($model) ? $model->stock : old('stock') }}" :model_validate_stock="{{ isset($model) ? $model->validate_stock : old('validate_stock') }}"></stock-input>
+    <stock-input :model_stock="{{ isset($model) ? $model->stock : old('stock', 0) }}" :model_validate_stock="{{ isset($model) ? $model->validate_stock : old('validate_stock', 0) }}"></stock-input>
   </div>
 
   <div class="form-group col-sm-12">

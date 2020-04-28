@@ -12,7 +12,7 @@ class Upload extends Model
 
   protected $guarded = [];
 
-  protected $appends = ['url', 'thumb', 'small'];
+  protected $appends = ['url', 'thumb', 'small', 'large'];
 
   /**
   *
@@ -24,7 +24,7 @@ class Upload extends Model
     parent::boot();
 
     static::deleting(function($item) {
-      Storage::delete([$item->doPath(), $item->doPath('thumb'), $item->doPath('small')]);
+      Storage::delete([$item->doPath(), $item->doPath('large'), $item->doPath('thumb'), $item->doPath('small')]);
     });
 
   }
@@ -37,6 +37,16 @@ class Upload extends Model
   public function getUrlAttribute()
   {
     return $this->doUrl();
+  }
+
+  /**
+  * Accesor to get upload Large URL
+  *
+  * @return string
+  */
+  public function getLargeAttribute()
+  {
+    return $this->type == 'image' ? $this->doUrl('large') : '';
   }
 
   /**
@@ -67,7 +77,7 @@ class Upload extends Model
   public function scopeCleanNotIn($query, $ids)
   {
     if(!is_array($ids)) return $query;
-    
+
     return $query->whereNotIn('id', $ids)->delete();
   }
 
@@ -112,6 +122,7 @@ class Upload extends Model
 
     // order from highest to lowest sizes
     $image->store($this->doPath());
+    $image->store($this->doPath('large'), 'large');
     $image->store($this->doPath('thumb'), 'thumb');
     $image->store($this->doPath('small'), 'small');
   }

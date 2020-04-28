@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+// Variables
+@import 'variables';
+
+@import 'front/card';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+.c-red{
+  color: $red;
+}
+
+.ellipsis-2{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

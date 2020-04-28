@@ -3,6 +3,8 @@
 /public/storage
 /public/js/app.js
 /public/css/app.css
+/public/js/front.js
+/public/css/front.css
 /storage/*.key
 /vendor
 package-lock.json

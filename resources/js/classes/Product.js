@@ -1,11 +1,12 @@
 export default class Product {
 
-    constructor(product){
+    constructor(product, quantity){
       this.data = product;
-      this.created = product.pivot;
-      this.quantity = product.pivot ? product.pivot.quantity : 0;
-      this.buyed_price = product.pivot ? product.pivot.buyed_price : product.price;
       this.priceDivisionNumber = product.selling_type == 1 ? 1 : 1000;
+      this.created = product.pivot;
+
+      this.cleanBasics(quantity);
+      if(this.created) this.setCreatedProduct();
     }
 
     setData(product){
@@ -19,8 +20,21 @@ export default class Product {
     getFormFormat(){
       return  {
         id: this.data.id,
-        quantity: this.quantity,
-        buyed_price: this.buyed_price
+        quantity: this.quantity
      };
+    }
+
+    getUnityType(){
+      return this.data.selling_type == 1 ? 'Unidades' : 'Gramos';
+    }
+
+    setCreatedProduct(){
+      this.quantity = this.data.pivot.quantity;
+      this.buyed_price = this.data.pivot.buyed_price;
+    }
+
+    cleanBasics(quantity){
+      this.quantity = quantity ? quantity : (this.data.selling_type == 1 ? 1 : 25);
+      this.buyed_price = this.data.price;
     }
 }

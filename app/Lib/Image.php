@@ -47,7 +47,7 @@ class Image
   */
   public function setVersionSize($size = -1)
   {
-    $sizes = ['thumb' => 180, 'small' => 45];
+    $sizes = ['large' => 1024, 'thumb' => 250, 'small' => 45];
     if(!isset($sizes[$size])) return;
     $w = $h = null;
     $this->image->width() > $this->image->height() ? $w = $sizes[$size] : $h = $sizes[$size];

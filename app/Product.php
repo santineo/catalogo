@@ -12,7 +12,7 @@ class Product extends Model
 
     protected $guarded = ['uploads'];
 
-    protected $appends = ['price_type', 'image'];
+    protected $appends = ['price_type', 'image', 'public_path'];
 
     /**
      * Get the route name
@@ -40,7 +40,7 @@ class Product extends Model
 
 
     /**
-     * Scope to search products by title
+     * Scope to search products by related products arguments
      *
      * @return Builder
      */
@@ -48,7 +48,60 @@ class Product extends Model
     {
       if(!$term) return $query;
 
-      return $query->where('title', 'like', '%' . $term . '%')->orWhere('id', $term);
+      return $query->where('title', 'like', '%' . $term . '%')
+                   ->orWhere('id', $term)
+                   ->orWhereHas('category', function($query) use($term){
+                     return $query->where('name', 'like', '%' . $term . '%');
+                   })
+                   ->orWhereHas('brand', function($query) use($term){
+                     return $query->where('name', 'like', '%' . $term . '%');
+                   });
+    }
+
+    /**
+     * Scope to search products by category id
+     *
+     * @return Builder
+     */
+    public function scopeCategory($query, $categoryId = false)
+    {
+      if(!$categoryId) return $query;
+
+      return $query->where('category_id', $categoryId);
+    }
+
+    /**
+     * Scope to get most sellers products (more count of orders)
+     *
+     * @return Builder
+     */
+    public function scopeMostSeller($query, $take = 4)
+    {
+      return $query->withCount('orders')->take($take)->orderBy('orders_count', 'desc');
+    }
+
+    /**
+     * Scope to search products by slug
+     *
+     * @return Builder
+     */
+    public function scopeSlug($query, $slug = false)
+    {
+      if(!$slug) return abort(404);
+
+      return $query->where('slug', $slug);
+    }
+
+    /**
+     * Scope to filter if have stock or not validate it
+     *
+     * @return Builder
+     */
+    public function scopeWithStock($query)
+    {
+      return $query->where('validate_stock', 0)->orWhere(function($query){
+        return $query->where('validate_stock', 1)->where('stock', '>', '0');
+      });
     }
 
     /**
@@ -59,6 +112,16 @@ class Product extends Model
     public function path()
     {
       return "/administracion/productos/{$this->id}";
+    }
+
+    /**
+     * Return Front Product path
+     *
+     * @return string
+     */
+    public function getPublicPathAttribute()
+    {
+      return route('front.products.show', $this->slug);
     }
 
     /**
@@ -121,6 +184,16 @@ class Product extends Model
     }
 
     /**
+     * Relationship with a orders
+     *
+     * @return collection with App\Order
+     */
+    public function orders()
+    {
+      return $this->belongsToMany('App\Order');
+    }
+
+    /**
      * Relationship with uploads
      *
      * @return collection
@@ -128,5 +201,26 @@ class Product extends Model
     public function uploads()
     {
       return $this->morphMany('App\Upload', 'uploadable')->orderBy('order', 'ASC');
+    }
+
+    /**
+     * Returns Primary Product Image or default Image URL
+     *
+     * @return string
+     */
+    public function getPrimaryImage($size = 'url')
+    {
+      return $this->image ? $this->image->{$size} : asset("/images/no-product-image" . ($size != 'url' ? "_$size" : '') . ".png");
+    }
+
+    /**
+     * Return unity type
+     *
+     * @return string
+     */
+    public function getQuantityLabelUnity($quantity = 1)
+    {
+      $unity = 'Unidad' . ($quantity > 1 ? 'es' : '');
+      return $this->selling_type == 1 ? $unity : 'grs.';
     }
 }

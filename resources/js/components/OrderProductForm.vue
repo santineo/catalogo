@@ -36,7 +36,8 @@
       <div class="form-group">
         <label for="quantity">Precio</label>
         <div class="input-group mb-3">
-          <input class="form-control" type="number" min="0.01" :step="0.01" v-model="buyed_price" aria-describedby="currency">
+          <div>{{ buyed_price }}</div>
+          <!-- <input class="form-control" type="number" min="0.01" :step="0.01" v-model="buyed_price" aria-describedby="currency"> -->
           <div class="input-group-append">
             <span class="input-group-text" id="currency">€</span>
           </div>

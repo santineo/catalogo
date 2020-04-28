@@ -1,6 +1,6 @@
 <template>
   <div v-if="Cart">
-    <div class="cart">
+    <div class="cart d-none d-md-block">
       <a href="/cart" class="p-2 bg-light border-top border-left border-bottom cart-link"><span>{{ Cart.products.length }}</span> <i class="fas fa-shopping-cart"></i></a>
     </div>
     <destroy-product :product="Cart.modals.destroy.product" />

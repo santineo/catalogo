@@ -16,7 +16,7 @@
 
   <div class="form-group col-sm-6">
     <label for="brand">Marca</label>
-    <create-select :default_options="{{ json_encode(\App\Brand::all()) }}" :input_name="'brand_id'" :placeholder="'Seleccione una categoría'" :title="'Categoría'" :callback="'addCategory'" :default_value="'{{ isset($model) ? $model->category_id : old('category_id') }}'"></create-select>
+    <create-select :default_options="{{ json_encode(\App\Brand::all()) }}" :input_name="'brand_id'" :placeholder="'Seleccione una marca'" :title="'Marca'" :callback="'addBrand'" :default_value="'{{ isset($model) ? $model->brand_id : old('brand_id') }}'"></create-select>
   </div>
 
   <div class="form-group col-sm-12 d-none">

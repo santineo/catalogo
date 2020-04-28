@@ -15,7 +15,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">$</span>
         </div>
-        <input type="text" name="price" class="form-control" v-model="price">
+        <input type="number" step="0.01" name="price" class="form-control" v-model="price" required>
         <div class="input-group-append">
           <span class="input-group-text">{{ unitLabel }}</span>
         </div>
@@ -31,7 +31,7 @@ export default {
   data(){
     return {
       price: 0,
-      sellingType: 1,
+      sellingType: 1
     }
   },
   mounted(){

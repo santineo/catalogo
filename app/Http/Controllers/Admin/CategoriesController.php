@@ -50,6 +50,8 @@ class CategoriesController extends Controller
     {
       $category = Category::create($this->validateRequest());
 
+      if(request()->ajax()) return response()->json(compact('category'), 200);
+
       return redirect('/administracion/categorias')->with(['info' => "Se ha creado la categoría {$category->name}"]);
     }
 

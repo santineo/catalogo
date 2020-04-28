@@ -39,6 +39,7 @@ class BrandsController extends Controller
     {
         $brand = Brand::create($this->validateRequest());
 
+        if(request()->ajax()) return response()->json(compact('brand'), 200);
         return redirect('/administracion/marcas')->with(['info' => "Se ha creado la marca {$brand->name}"]);
     }
 

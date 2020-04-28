@@ -11,6 +11,10 @@
       </div>
       <div class="modal-body">
         <div v-if="Modal.text" v-html="Modal.text"></div>
+        <div class="form-group" v-if="Modal.input">
+          <label v-if="Modal.input.label">{{ Modal.input.label }}</label>
+          <input type="text" v-model="Modal.input.value" class="form-control">
+        </div>
       </div>
       <div class="modal-footer" v-if="Modal.buttons">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -30,7 +34,7 @@ export default {
   },
   methods: {
     trigger(){
-      Modal.callback();
+      Modal.callback(Modal.input ? Modal.input.value : null);
       Modal.close();
     }
   }

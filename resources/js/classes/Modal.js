@@ -1,9 +1,10 @@
 class Modal {
 
   constructor(callback){
-      this.callback = false;
+      this.callback = callback;
       this.title = false;
       this.text = false;
+      this.input = false;
       this.buttons = false;
 
       this.evented = false;
@@ -16,14 +17,7 @@ class Modal {
   open(){
     $('#modalConfirm').modal('show');
 
-    if(!this.evented){
-      $('#modalConfirm').on('hidden.bs.modal', () => {
-        this.title = false;
-        this.text = false;
-        this.buttons = false;
-      });
-      this.evented = true;
-    }
+    this.setCleanWhenClose();
   }
 
   delete(callback){
@@ -32,6 +26,28 @@ class Modal {
     this.text = '¿Esta seguro de eliminar el elemento?';
     this.buttons = true;
     this.open();
+  }
+
+  create(attributes){
+    this.callback = attributes.callback;
+    this.title = attributes.title;
+    this.text = attributes.text;
+    this.input = attributes.input;
+    this.buttons = true;
+
+    this.open();
+  }
+
+  setCleanWhenClose(){
+    if(!this.evented){
+      $('#modalConfirm').on('hidden.bs.modal', () => {
+        this.title = false;
+        this.text = false;
+        this.input = false;
+        this.buttons = false;
+      });
+      this.evented = true;
+    }
   }
 
 }

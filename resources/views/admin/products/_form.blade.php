@@ -11,25 +11,15 @@
 
   <div class="form-group col-sm-6">
     <label for="category">Categoría*</label>
-    <select class="custom-select" id="category" name="category_id">
-      <option {{ !(isset($model) ? $model->category_id : old('category_id')) ? 'selected' : '' }}>Seleccione una categoría</option>
-      @foreach (\App\Category::all() as $key => $category)
-        <option value="{{ $category->id }}" {{ (isset($model) ? $model->category_id : old('category_id')) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
-      @endforeach
-    </select>
+    <create-select :default_options="{{ json_encode(\App\Category::all()) }}" :input_name="'category_id'" :placeholder="'Seleccione una categoría'" :title="'Categoría'" :callback="'addCategory'" :default_value="'{{ isset($model) ? $model->category_id : old('category_id') }}'"></create-select>
   </div>
 
   <div class="form-group col-sm-6">
     <label for="brand">Marca</label>
-    <select class="custom-select" id="brand" name="brand_id">
-      <option {{ !(isset($model) ? $model->brand_id : old('brand_id')) ? 'selected' : '' }}>Seleccione una marcas</option>
-      @foreach (\App\Brand::all() as $key => $brand)
-        <option value="{{ $brand->id }}" {{ (isset($model) ? $model->category_id : old('brand_id')) == $brand->id ? 'selected' : '' }}>{{ $brand->name }}</option>
-      @endforeach
-    </select>
+    <create-select :default_options="{{ json_encode(\App\Brand::all()) }}" :input_name="'brand_id'" :placeholder="'Seleccione una categoría'" :title="'Categoría'" :callback="'addCategory'" :default_value="'{{ isset($model) ? $model->category_id : old('category_id') }}'"></create-select>
   </div>
 
-  <div class="form-group col-sm-12">
+  <div class="form-group col-sm-12 d-none">
     <stock-input :model_stock="{{ isset($model) ? $model->stock : old('stock', 0) }}" :model_validate_stock="{{ isset($model) ? $model->validate_stock : old('validate_stock', 0) }}"></stock-input>
   </div>
 

@@ -15,7 +15,7 @@ class CartController extends Controller
      */
     public function cart()
     {
-        return view('front.cart');
+        return view('front.cart', ['hideCart' => true]);
     }
 
     /**
@@ -25,7 +25,10 @@ class CartController extends Controller
      */
     public function getCart()
     {
-        return response()->json(['cart' => array_values(session('cart', []))], 200);
+      $cartName = 'cart';
+      if(request('token') && session('cart_' . request('token'), false)) $cartName = 'cart_' . request('token');
+
+      return response()->json(['cart' => array_values(session($cartName, []))], 200);
     }
 
     /**
@@ -46,7 +49,7 @@ class CartController extends Controller
       }
 
 
-      return $this->storeAndResponse($cart, ['type' => 'success', 'message' => "Se ha agregado <a href=\"{$newProduct['data']->public_path}\">{$newProduct['data']->title}</a> x {$newProduct['quantity']}"]);
+      return $this->storeAndResponse($cart, ['type' => 'success', 'title' => 'Cesta Actualizada', 'message' => "Se ha agregado <a href=\"{$newProduct['data']->public_path}\">{$newProduct['data']->title}</a> x {$newProduct['quantity']}."]);
     }
 
     /**

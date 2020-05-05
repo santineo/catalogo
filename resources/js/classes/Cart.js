@@ -2,7 +2,9 @@ export default class Cart{
   constructor(){
     this.loading = false;
     this.products = [];
-    this.fetchCart();
+    this.token = false;
+    this.created = false;
+    this.updated = false;
     this.modals = {
       destroy: {
         id: 'destroyProductModalId',
@@ -15,8 +17,9 @@ export default class Cart{
     };
   }
 
-  fetchCart(){
-    this.connect('getCart');
+  fetchCart(token){
+    this.token = token;
+    this.connect('getCart', {token});
   }
 
   add(params, callback){
@@ -42,16 +45,22 @@ export default class Cart{
     this.loading = true;
     axios.post(`/cart/${url}`, params)
     .then((response) => {
-      this.products = response.data.cart;
+      this.setCart(response.data.cart);
       if(response.data.alert) Alert.open(response.data.alert.type, response.data.alert.message, response.data.alert.title);
+      if(url == 'remove' || url == 'update' || url == 'add') this.updated = true;
     })
     .catch((error) => {
       console.log(error);
     })
     .then(() => {
       this.loading = false;
+      this.created = true;
       if(callback) callback();
     });
+  }
+
+  setCart(cart){
+    this.products = cart;
   }
 
   getProductNoImage(size = 'url'){

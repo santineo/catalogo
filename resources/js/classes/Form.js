@@ -6,13 +6,13 @@ class Form {
      *
      * @param {object} data
      */
-    constructor(data) {
+    constructor(data, callback) {
         this.originalData = data;
 
         for (let field in data) {
             this[field] = data[field];
         }
-
+        this.callback = callback ? callback : () => { return {}; };
         this.errors = new Errors();
     }
 
@@ -82,7 +82,6 @@ class Form {
         return this.submit('delete', url);
     }
 
-
     /**
      * Submit the form.
      *
@@ -91,7 +90,7 @@ class Form {
      */
     submit(requestType, url) {
         return new Promise((resolve, reject) => {
-            axios[requestType](url, this.data())
+            axios[requestType](url, Object.assign(this.data(), this.callback()))
                 .then(response => {
                     this.onSuccess(response.data);
 

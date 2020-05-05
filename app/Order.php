@@ -81,4 +81,16 @@ class Order extends Model
         $this->products()->attach($product->id, $newProductsValues[$product->id]);
       }
     }
+
+    /**
+     * Sync Products and Refresh Stock if necessary
+     *
+     * @void
+     */
+    public function syncCartProducts($cartProducts)
+    {
+      foreach ($cartProducts as $product) {
+        $this->products()->attach($product['id'], ['quantity' => $product['quantity'], 'buyed_price' => $product['data']['price']]);
+      }
+    }
 }

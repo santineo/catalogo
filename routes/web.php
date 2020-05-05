@@ -12,8 +12,16 @@
 */
 
 Route::get('/', 'FrontController@home')->name('home');
-Route::get('/productos', 'ProductsController@index')->name('front.products.index');
-Route::get('/productos/{slug}', 'ProductsController@show')->name('front.products.show');
+
+Route::prefix('productos')->group(function(){
+  Route::get('/', 'ProductsController@index')->name('front.products.index');
+  Route::get('/{slug}', 'ProductsController@show')->name('front.products.show');
+});
+
+Route::prefix('checkout')->group(function(){
+  Route::get('/', 'CheckoutController@create')->name('front.checkout.create');
+  Route::post('/', 'CheckoutController@store')->name('front.checkout.store');
+});
 
 Route::prefix('cart')->group(function(){
   Route::get('/', 'CartController@cart');
@@ -22,6 +30,7 @@ Route::prefix('cart')->group(function(){
   Route::post('update', 'CartController@update');
   Route::post('remove', 'CartController@remove');
 });
+
 Route::get('/', 'FrontController@home')->name('home');
 
 Route::prefix('administracion')->middleware('auth')->namespace('Admin')->group(function(){

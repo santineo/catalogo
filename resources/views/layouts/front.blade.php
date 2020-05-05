@@ -34,7 +34,7 @@
 
           @include('front.partials.footer')
 
-          <cart />
+          <cart :token="{{ isset($token) ? "'$token'" : 'false' }}" :show="{{ isset($hideCart) && $hideCart ? 'false' : 'true' }}" />
         </main>
 
     </div>

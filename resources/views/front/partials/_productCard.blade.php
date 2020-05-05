@@ -8,7 +8,7 @@
         {{ $product->title }}
       </div>
       <div class="card-product-price text-right mt-1">
-        €{{ $product->price }} <small>/ {{ $product->selling_type == 1 ? 'unidad' : 'kilo' }}</small>
+        €{{ number_format($product->price, 2, ',', ' ') }} <small>/ {{ $product->selling_type == 1 ? 'unidad' : 'kilo' }}</small>
       </div>
     </div>
   </a>

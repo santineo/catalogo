@@ -19,7 +19,7 @@
         <div class="card rounded-0 text-center px-4 py-3">
           <div class="mb-3 large">Subtotal (@{{ Cart.products.length }} productos): <strong class="c-red">@{{ Cart.getTotal() }}€</strong></div>
           <div>
-            <a href="#" class="btn btn-dark">Tramitar Pedido</a>
+            <a href="/checkout" class="btn btn-dark">Tramitar Pedido</a>
         </div>
       </div>
 

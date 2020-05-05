@@ -7,6 +7,8 @@
 @import 'front/card';
 @import 'front/navbar';
 
+
+@import 'custom/custom';
 // Bootstrap
 
 
@@ -26,4 +28,9 @@
   body{
     text-align: center;
   }
+}
+
+.checkout-products-list{
+  max-height: 310px;
+  overflow: auto;
 }

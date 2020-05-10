@@ -30,7 +30,7 @@ Vue.component('errors', require('./components/ErrorsComponent.vue').default);
 Vue.component('image-input', require('./components/ImageInputComponent.vue').default);
 Vue.component('price-input', require('./components/PriceComponent.vue').default);
 Vue.component('stock-input', require('./components/StockComponent.vue').default);
-Vue.component('create-se1lect', require('./components/CreateSelectComponent.vue').default);
+Vue.component('create-select', require('./components/CreateSelectComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

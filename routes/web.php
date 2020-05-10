@@ -36,6 +36,10 @@ Route::get('/', 'FrontController@home')->name('home');
 Route::prefix('administracion')->middleware('auth')->namespace('Admin')->group(function(){
   Route::get('/', 'DashboardController@dashboard')->name('dashboard');
 
+  Route::get('/newsletters/crear', 'NewslettersController@create')->name('newsletters.create');
+  Route::post('/newsletters', 'NewslettersController@store')->name('newsletters.store');
+  Route::post('/newsletters/preview', 'NewslettersController@preview')->name('newsletters.preview');
+
   Route::resource('categorias', 'CategoriesController')->parameters(['categorias' => 'category']);
   Route::resource('marcas', 'BrandsController')->parameters(['marcas' => 'brand']);
 

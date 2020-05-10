@@ -24,12 +24,13 @@ window.Vue = require('vue');
 Vue.component('edit-button', require('./components/buttons/EditComponent.vue').default);
 Vue.component('delete-button', require('./components/buttons/DeleteComponent.vue').default);
 Vue.component('order-form', require('./components/OrderFormComponent.vue').default);
+Vue.component('newsletter-form', require('./components/NewsletterFormComponent.vue').default);
 Vue.component('modal-confirm', require('./components/ModalComponent.vue').default);
 Vue.component('errors', require('./components/ErrorsComponent.vue').default);
 Vue.component('image-input', require('./components/ImageInputComponent.vue').default);
 Vue.component('price-input', require('./components/PriceComponent.vue').default);
 Vue.component('stock-input', require('./components/StockComponent.vue').default);
-Vue.component('create-select', require('./components/CreateSelectComponent.vue').default);
+Vue.component('create-se1lect', require('./components/CreateSelectComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

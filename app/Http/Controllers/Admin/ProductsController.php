@@ -16,6 +16,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
+        if(request()->ajax()) return response()->json(['products' => Product::all()], 200);
+
         $products = Product::search(request('term'))->paginate(20);
         return view('admin.products.index', compact('products'));
     }

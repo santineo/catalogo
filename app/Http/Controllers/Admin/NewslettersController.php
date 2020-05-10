@@ -40,7 +40,7 @@ class NewslettersController extends Controller
     {
       $sended = false;
       foreach (request()->get('emails', []) as $key => $email) {
-        Mail::to($email)->send(new NewsletterMail(request()->get('products')));
+        Mail::to($email)->send(new NewsletterMail(request()->get('products')), request()->get('subject'));
       }
       if(!Mail::failures()) $sended = true;
       return response()->json(compact('sended'), 200);

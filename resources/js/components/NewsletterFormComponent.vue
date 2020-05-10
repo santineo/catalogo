@@ -60,7 +60,7 @@ export default {
     send(){
       axios.post('/administracion/newsletters', {
         emails: this.emails,
-        products: this.products,
+        products: this.products.map(product => product.id),
         subject: this.subject
       })
       .then((response) => {

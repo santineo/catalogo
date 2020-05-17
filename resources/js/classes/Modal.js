@@ -6,6 +6,8 @@ class Modal {
       this.text = false;
       this.input = false;
       this.buttons = false;
+      this.loading = false;
+      this.error = false;
 
       this.evented = false;
   }
@@ -33,9 +35,23 @@ class Modal {
     this.title = attributes.title;
     this.text = attributes.text;
     this.input = attributes.input;
+    this.loading = attributes.loading;
     this.buttons = true;
 
     this.open();
+  }
+
+  show(attributes){
+    this.title = attributes.title;
+    this.text = attributes.text;
+    this.loading = attributes.loading;
+    this.buttons = false;
+
+    this.open();
+  }
+
+  throw(message = 'Ha ocurrido un error al cargar el recurso. Refresca la página e intente de nuevo.'){
+    this.error = message;
   }
 
   setCleanWhenClose(){
@@ -45,6 +61,8 @@ class Modal {
         this.text = false;
         this.input = false;
         this.buttons = false;
+        this.loading = false;
+        this.error = false;
       });
       this.evented = true;
     }

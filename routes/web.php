@@ -50,6 +50,8 @@ Route::prefix('administracion')->middleware('auth')->namespace('Admin')->group(f
   Route::resource('pedidos', 'OrdersController')->except(['destroy'])->parameters(['pedidos' => 'order']);
   Route::post('/pedidos/{order}/status', 'OrdersController@updateStatus');
   Route::get('/pedidos/{order}/productos', 'OrdersController@getProducts');
+
+  Route::resource('contactos', 'ContactsController')->only(['index', 'show'])->parameters(['contactos' => 'contact']);
 });
 
 Auth::routes(['register' => false]);

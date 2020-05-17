@@ -9,7 +9,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body position-relative">
+        <loader :loading="Modal.loading" />
+        <div v-if="Modal.error" v-html="Modal.error" class="alert alert-danger"></div>
         <div v-if="Modal.text" v-html="Modal.text"></div>
         <div class="form-group" v-if="Modal.input">
           <label v-if="Modal.input.label">{{ Modal.input.label }}</label>
@@ -26,7 +28,11 @@
 </template>
 
 <script>
+import Loader from './LoaderComponent.vue';
 export default {
+  components: {
+    'loader': Loader
+  },
   data(){
     return {
       Modal,

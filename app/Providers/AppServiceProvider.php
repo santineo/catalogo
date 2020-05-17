@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use App\Contact;
+use App\Observers\ContactObserver;
 
 class AppServiceProvider extends ServiceProvider
 {

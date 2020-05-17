@@ -9,6 +9,16 @@ trait Button
    *
    * @¶eturn string
    */
+  public function getShowButtonAttribute()
+  {
+    return '<show-button :url="\'' . route("{$this->getRouteName()}", $this->id) .  '\'"></show-button>';
+  }
+
+  /**
+   * Get the editable button
+   *
+   * @¶eturn string
+   */
   public function getEditButtonAttribute()
   {
     return '<edit-button :url="\'' . route("{$this->getRouteName()}.edit", $this->id) .  '\'"></edit-button>';

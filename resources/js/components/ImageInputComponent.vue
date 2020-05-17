@@ -1,7 +1,10 @@
 <template>
   <div>
     <div v-if="upload">
-      <img :src="upload.thumb" alt="">
+      <img :src="upload.thumb" alt="" v-if="!loading">
+      <div style="height: 250px; width:250px" class="position-relative" v-if="loading">
+        <loader :loading="loading" :text="'Subiendo Imagen'"/>
+      </div>
       <input type="hidden" name="uploads[]" :value="upload.id">
     </div>
     <div class="p-1">
@@ -13,10 +16,15 @@
 </template>
 
 <script>
+import Loader from './LoaderComponent.vue';
 export default {
   props: ['saved'],
+  components: {
+    'loader': Loader,
+  },
   data(){
     return {
+      loading: false,
       upload: this.saved,
       errors: false,
     }
@@ -31,6 +39,7 @@ export default {
       this.errors = false;
       let formData = new FormData();
       formData.append('image', this.$refs.file.files[0]);
+      this.loading = true;
       axios.post('/administracion/uploads',
       formData,
       {headers: {'Content-Type': 'multipart/form-data'}})
@@ -41,7 +50,10 @@ export default {
         if (error.response.status == 422){
           this.errors = error.response.data.errors;
          }
-      });
+      })
+      .then((response) => {
+        this.loading = false;
+      })
     }
   }
 }

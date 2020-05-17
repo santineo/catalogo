@@ -11,7 +11,7 @@ trait Button
    */
   public function getShowButtonAttribute()
   {
-    return '<show-button :url="\'' . route("{$this->getRouteName()}", $this->id) .  '\'"></show-button>';
+    return '<show-button :url="\'' . route("{$this->getRouteName()}.show", $this->id) .  '\'"></show-button>';
   }
 
   /**

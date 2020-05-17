@@ -8,13 +8,13 @@ export default {
   methods:{
     showModal(){
       Modal.show({
-        title: 'Contacto'
+        title: 'Contacto',
         text: false,
         loading: true
       });
       axios.get(this.url)
       .then((response) => {
-        Modal.text = response.view;
+        Modal.text = response.data.view;
       })
       .catch((error) => {
         Modal.throw();

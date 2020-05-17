@@ -13,6 +13,11 @@
 
 Route::get('/', 'FrontController@home')->name('home');
 
+Route::prefix('contacto')->group(function(){
+  Route::get('/', 'ContactsController@create')->name('front.contacts.create');
+  Route::post('/', 'ContactsController@store')->name('front.contacts.store');
+});
+
 Route::prefix('productos')->group(function(){
   Route::get('/', 'ProductsController@index')->name('front.products.index');
   Route::get('/{slug}', 'ProductsController@show')->name('front.products.show');

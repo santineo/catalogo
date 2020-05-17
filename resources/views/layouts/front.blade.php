@@ -25,7 +25,7 @@
         <main>
           @include('front.partials.nav')
 
-          <div class="py-4">
+          <div class="py-4" style="min-height: calc(100vh - 170px);">
             <div class="container">
               <alert :class="'mb-3'"></alert>
             </div>

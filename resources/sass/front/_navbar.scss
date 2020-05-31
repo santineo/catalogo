@@ -25,4 +25,29 @@
     }
   }
 
+  .nav-facebook{
+    color: #3B5998 !important;
+  }
+  .nav-instagram{
+    color: #DD2A7B !important;
+  }
+  .nav-youtube{
+    color: #C4302b !important;
+  }
+  .nav-pinterest{
+    color: #C8232C !important;
+  }
+
+  .nav-link{
+    font-size: 0.85rem;
+    &.nav-link-social{
+      font-size: 1.1rem;
+      position: relative;
+      top: -2px;
+    }
+  }
+
+  &-dark .navbar-nav .nav-link{
+    color: #fff;
+  }
 }

@@ -57,6 +57,9 @@ Route::prefix('administracion')->middleware('auth')->namespace('Admin')->group(f
   Route::get('/pedidos/{order}/productos', 'OrdersController@getProducts');
 
   Route::resource('contactos', 'ContactsController')->only(['index', 'show'])->parameters(['contactos' => 'contact']);
+
+  Route::get('/configuracion', 'ConfigsController@index')->name('configs.index');
+  Route::post('/configuracion', 'ConfigsController@save')->name('configs.save');
 });
 
 Auth::routes(['register' => false]);

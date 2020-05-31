@@ -25,6 +25,7 @@ Vue.component('show-button', require('./components/buttons/ShowComponent.vue').d
 Vue.component('edit-button', require('./components/buttons/EditComponent.vue').default);
 Vue.component('delete-button', require('./components/buttons/DeleteComponent.vue').default);
 Vue.component('order-form', require('./components/OrderFormComponent.vue').default);
+Vue.component('config-form', require('./components/ConfigFormComponent.vue').default);
 Vue.component('newsletter-form', require('./components/NewsletterFormComponent.vue').default);
 Vue.component('modal-confirm', require('./components/ModalComponent.vue').default);
 Vue.component('errors', require('./components/ErrorsComponent.vue').default);

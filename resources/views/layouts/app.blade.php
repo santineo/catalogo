@@ -37,7 +37,8 @@
           <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('categorias.index') }}"><i class="far fa-list-alt pr-3"></i>Categorías</a></li>
           <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('pedidos.index') }}"><i class="fas fa-clipboard-list pr-3"></i>Pedidos</a></li>
           <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('contactos.index') }}"><i class="fas fa-clipboard-list pr-3"></i>Contactos</a></li>
-          <li class="py-3 pl-4 border-top border-secondary border-bottom"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('newsletters.create') }}"><i class="fas fa-clipboard-list pr-3"></i>Newsletters</a></li>
+          <li class="py-3 pl-4 border-top border-secondary"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('newsletters.create') }}"><i class="fas fa-clipboard-list pr-3"></i>Newsletters</a></li>
+          <li class="py-3 pl-4 border-top border-secondary border-bottom"><a class="d-block text-light text-uppercase font-weight-semibold" href="{{ route('configs.index') }}"><i class="fas fa-clipboard-list pr-3"></i>Adminitración General</a></li>
         </ul>
       </aside>
     @endauth

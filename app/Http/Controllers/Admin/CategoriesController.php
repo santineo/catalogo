@@ -27,6 +27,9 @@ class CategoriesController extends Controller
     public function index()
     {
       $categories = Category::search(request('term'))->get();
+
+      if(request()->ajax()) return response()->json(compact('categories'));
+      
       return view('admin.categories.index', compact('categories'));
     }
 

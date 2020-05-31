@@ -4,10 +4,10 @@
   <header class="py-4">
     <div class="container">
       <div class="row">
-        @include('front.partials._categoryCard', ['url' => route('front.products.index', ['category' => 1]), 'category' => 'Categoría', 'image' => '', 'cssClass' => 'col-md-3 col-sm-6'])
-        @include('front.partials._categoryCard', ['url' => route('front.products.index', ['category' => 2]), 'category' => 'Categoría', 'image' => '', 'cssClass' => 'col-md-3 col-sm-6'])
-        @include('front.partials._categoryCard', ['url' => route('front.products.index', ['category' => 3]), 'category' => 'Categoría', 'image' => '', 'cssClass' => 'col-md-3 col-sm-6'])
-        @include('front.partials._categoryCard', ['url' => route('front.products.index', ['category' => 4]), 'category' => 'Categoría', 'image' => '', 'cssClass' => 'col-md-3 col-sm-6'])
+        @include('front.partials._categoryCard', ['category' => $home->category_1->getCategory(), 'image' => $home->category_image_1->image, 'cssClass' => 'col-md-3 col-sm-6'])
+        @include('front.partials._categoryCard', ['category' => $home->category_2->getCategory(), 'image' => $home->category_image_2->image, 'cssClass' => 'col-md-3 col-sm-6'])
+        @include('front.partials._categoryCard', ['category' => $home->category_3->getCategory(), 'image' => $home->category_image_3->image, 'cssClass' => 'col-md-3 col-sm-6'])
+        @include('front.partials._categoryCard', ['category' => $home->category_4->getCategory(), 'image' => $home->category_image_4->image, 'cssClass' => 'col-md-3 col-sm-6'])
       </div>
     </div>
   </header>

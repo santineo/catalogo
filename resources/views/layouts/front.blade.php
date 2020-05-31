@@ -21,7 +21,6 @@
   <div id="front">
 
     <div class="wrapper">
-
         <main>
           @include('front.partials.nav')
 

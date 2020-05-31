@@ -23,9 +23,6 @@
         Se han encontrado <span class="font-weight-bold">{{ $values->count() }}</span> {{ $title }} bajo el término de busqueda <span class="font-weight-bold">"{{ request('term') }}"</span>.
       </div>
     @endif
-    <div class="">
-
-    </div>
 
     @if($values->count())
       {{-- Table --}}

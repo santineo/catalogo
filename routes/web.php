@@ -58,6 +58,9 @@ Route::prefix('administracion')->middleware('auth')->namespace('Admin')->group(f
 
   Route::resource('contactos', 'ContactsController')->only(['index', 'show'])->parameters(['contactos' => 'contact']);
 
+  Route::resource('clientes', 'ClientsController')->parameters(['clientes' => 'client']);
+  Route::resource('grupos', 'GroupClientsController')->except(['show'])->parameters(['grupos' => 'groupClient']);
+
   Route::get('/configuracion', 'ConfigsController@index')->name('configs.index');
   Route::post('/configuracion', 'ConfigsController@save')->name('configs.save');
 });

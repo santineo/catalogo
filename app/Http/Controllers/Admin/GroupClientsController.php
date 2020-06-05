@@ -15,7 +15,9 @@ class GroupClientsController extends Controller
      */
     public function index()
     {
-        $groupClients = GroupClient::search(request('term'))->get();
+        $groupClients = GroupClient::search(request('term'));
+        if(request('limited')) $groupClients->has('clients');
+        $groupClients = $groupClients->get();
         if(request()->ajax()) return response()->json(['list' => $groupClients], 200);
         return view('admin.group_clients.index', compact('groupClients'));
     }

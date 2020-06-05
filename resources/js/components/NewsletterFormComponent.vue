@@ -20,10 +20,14 @@
     <product-list :products="products" class="mt-5"></product-list>
     <hr/>
     <email-list :emails="emails" class="mt-4"></email-list>
+    <hr />
+    <select-list :feed_uri="'/administracion/grupos?limited=1'" label="Grupos" @updated="updateGroups"></select-list>
+    <hr />
+    <select-list :feed_uri="'/administracion/clientes'" label="Clientes" @updated="updateClients"></select-list>
     <hr/>
     <div class="text-right mt-4">
       <button type="button" @click="showPreview" :disabled="!products.length" class="btn btn-success btn-lg">Previsualizar</button>
-      <button type="button" @click="send" :disabled="(!products.length || !emails.length)" class="btn btn-primary btn-lg">Enviar</button>
+      <button type="button" @click="send" :disabled="canSend" class="btn btn-primary btn-lg">Enviar</button>
     </div>
 
     <prev-modal :id="prevId" :preview="preview"></prev-modal>
@@ -48,6 +52,8 @@ export default {
     return {
       products: [],
       emails: [],
+      clients: [],
+      groups: [],
       subject: '',
       preview: false,
       prevId: 'prevModal',
@@ -56,10 +62,17 @@ export default {
       error: false
     }
   },
+  computed:{
+    canSend(){
+      return !(this.products.length && (this.emails.length || this.clients.length || this.groups.length));
+    }
+  },
   methods:{
     send(){
       axios.post('/administracion/newsletters', {
         emails: this.emails,
+        groups: this.groups,
+        clients: this.clients,
         products: this.products.map(product => product.id),
         subject: this.subject
       })
@@ -82,6 +95,12 @@ export default {
       .then((response) => {
         this.preview = response.data.view;
       })
+    },
+    updateClients(clients){
+      this.clients = clients;
+    },
+    updateGroups(groups){
+      this.groups = groups;
     }
   }
 }

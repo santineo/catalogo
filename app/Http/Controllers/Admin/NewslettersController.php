@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
+use App\GroupClient;
+use App\Client;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Newsletter as NewsletterMail;
 
@@ -39,7 +41,15 @@ class NewslettersController extends Controller
     public function store()
     {
       $sended = false;
-      foreach (request()->get('emails', []) as $key => $email) {
+      $emails = request()->get('emails', []);
+
+      $emais = array_merge(Client::whereIn('id', request()->get('clients', []))->get()->pluck('email')->toArray(), $emails);
+
+      foreach (GroupClient::whereIn('id', request()->get('groups', []))->get() as $key => $groups) {
+        $emails = array_merge($emails, $groups->clients->pluck('email')->toArray());
+      }
+
+      foreach (array_unique($emails) as $key => $email) {
         Mail::to($email)->send(new NewsletterMail(request()->get('products')), request()->get('subject'));
       }
       if(!Mail::failures()) $sended = true;

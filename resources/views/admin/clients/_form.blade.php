@@ -16,3 +16,4 @@
     <textarea name="information" class="form-control">{{ isset($model) ? $model->information : old('information') }}</textarea>
   </div>
 </div>
+<select-list :saved="{{ json_encode(isset($model) ? $model->groups->pluck('id') : []) }}" :feed_uri="'{{ route('grupos.index') }}'" :name="'groups'"></select-list>

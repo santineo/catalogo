@@ -33,6 +33,7 @@ Vue.component('image-input', require('./components/ImageInputComponent.vue').def
 Vue.component('price-input', require('./components/PriceComponent.vue').default);
 Vue.component('stock-input', require('./components/StockComponent.vue').default);
 Vue.component('create-select', require('./components/CreateSelectComponent.vue').default);
+Vue.component('select-list', require('./components/SelectListComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -38,7 +38,7 @@ class ClientsController extends Controller
     public function store()
     {
         $client = Client::create($this->validateRequest());
-
+        $client->groups()->sync(request()->get('groups', []));
         return redirect()->route('clientes.index')->with(['info' => "Se ha creado el cliente <strong>$client->name</strong>"]);
     }
 
@@ -75,6 +75,7 @@ class ClientsController extends Controller
     public function update(Client $client)
     {
       $client->fill($this->validateRequest())->save();
+      $client->groups()->sync(request()->get('groups', []));
 
       return redirect()->route('clientes.index')->with(['info' => "Se ha actualizado el cliente <strong>$client->name</strong>"]);
     }

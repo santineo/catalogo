@@ -19,12 +19,22 @@
       background-position: center center;
       transition: opacity 0.3s ease-in-out;
       border-radius: inherit;
+
     }
-    
+
     .card-category-name{
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
       color: #fff;
+    }
+
+    &.no-image{
+      .card-category-image{
+        background-color: #888;
+      }
+      .card-category-name{
+        opacity: 1;
+      }
     }
 
     &:hover{

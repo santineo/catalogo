@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import 'vue-search-select/dist/VueSearchSelect.css'
-import { ModelSelect } from 'vue-search-select'
+import 'vue-search-select/dist/VueSearchSelect.css';
+import { ModelSelect } from 'vue-search-select';
 export default {
   props: ['default_options', 'default_value', 'placeholder', 'callback', 'title', 'input_name'],
   components: {

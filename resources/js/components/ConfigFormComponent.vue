@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="saved" class="alert alert-success">Se ha guardado con éxito</div>
-    <div v-if="error" class="alert alert-success">Se ha encontrado un problema al guardar los datos</div>
+    <div v-if="error" class="alert alert-danger">Se ha encontrado un problema al guardar los datos</div>
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item">
         <a class="nav-link px-5 active" id="pills-general-tab" data-toggle="pill" href="#pills-general" role="tab" aria-controls="pills-general" aria-selected="true">General</a>
@@ -242,6 +242,13 @@ export default {
       .catch(() => {
         this.error = true;
       })
+      .then(() => {
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+      });
     },
     getIndexValue(index){
       const indexConfig = this.stored_configs.find(config => config.index == index);

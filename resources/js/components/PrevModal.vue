@@ -8,7 +8,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body px-0">
           <loader :loading="!preview" />
           <div v-if="preview" v-html="preview"></div>
         </div>

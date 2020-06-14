@@ -36,9 +36,13 @@ class ConfigsController extends Controller
       $configModel = Config::firstOrCreate(['index' => $config['index']]);
       $configModel->value = isset($config['value']) ? $config['value'] : null;
       if (isset($config['upload_id'])) {
-        $isNew = $configModel->uploads->first() && $configModel->uploads->first()->id != $config['upload_id'];
-        if($isNew) $configModel->uploads()->delete();
-        if(($isNew || !$first) && $upload = Upload::find($config['upload_id'])) $configModel->uploads()->save($upload);
+        $currentUpload = $configModel->uploads->first();
+        $isNew = !$currentUpload || ($currentUpload && $currentUpload->id != $config['upload_id']);
+        if($isNew){
+           $configModel->uploads()->delete();
+           $upload = Upload::find($config['upload_id']);
+           if($upload) $configModel->uploads()->save($upload);
+         }
       }
       $configModel->save();
     }

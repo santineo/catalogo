@@ -33,6 +33,6 @@ class Newsletter extends Mailable
      */
     public function build()
     {
-        return $this->subject($this->subject)->from(env('APP_EMAIL_FROM', 'no-reply@catalogo.com'))->view('emails.products')->with(['products' => $this->products]);
+        return $this->subject($this->subject)->from(env('APP_EMAIL_FROM', 'no-reply@catalogo.com'))->view('emails.products_v2')->with(['products' => $this->products]);
     }
 }

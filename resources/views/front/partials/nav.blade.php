@@ -5,7 +5,7 @@
       <h1>
         <a class="navbar-brand" href="{{ route('home') }}">
           @if ($configs->logo->image)
-            <img src="{{ $configs->logo->image }}" style="max-width:80px" alt="">
+            <img src="{{ $configs->logo->image }}" style="max-width:180px; max-height: 80px;" alt="">
           @endif
           <span class="{{ $configs->logo->image ? 'sr-only' : '' }}">{{ $configs->site_name->value }}</span>
         </a>

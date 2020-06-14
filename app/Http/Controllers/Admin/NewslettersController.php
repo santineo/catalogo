@@ -30,7 +30,7 @@ class NewslettersController extends Controller
      */
     public function preview()
     {
-      return response()->json(['view' => view('emails.products', ['products' => Product::whereIn('id', request()->get('products', []))->get()])->render()], 200);
+      return response()->json(['view' => view('emails.products_v2', ['products' => Product::whereIn('id', request()->get('products', []))->get()])->render()], 200);
     }
 
     /**

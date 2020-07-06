@@ -9,7 +9,7 @@ class Image
 
   protected $image, $mime;
 
-  public function __construct($image, $mime = 'jpg')
+  public function __construct($image, $mime = 'png')
   {
     $this->image = ImageManagerStatic::make($image);
     $this->mime = $mime;

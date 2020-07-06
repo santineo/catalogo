@@ -112,7 +112,7 @@ class Upload extends Model
   {
     $this->type = 'image';
     $this->path = $path;
-    $this->extension = 'jpg';
+    $this->extension = 'png';
     $this->order = 0;
     $this->setName(Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)));
 

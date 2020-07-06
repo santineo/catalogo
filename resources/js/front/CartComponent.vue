@@ -56,7 +56,7 @@ export default {
 
   &-link{
     position: absolute;
-    left: -85px;
+    left: -80px;
     border-radius: 21px 0px 0px 21px;
     font-size: 2rem;
     display: flex;

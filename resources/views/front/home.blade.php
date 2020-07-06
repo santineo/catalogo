@@ -3,7 +3,7 @@
 @section('content')
   <header class="py-4">
     <div class="container">
-      <div class="row">
+      <div class="row justify-content-center">
         @include('front.partials._categoryCard', ['category' => $home->category_1->getCategory(), 'image' => $home->category_image_1->image, 'cssClass' => 'col-md-3 col-sm-6'])
         @include('front.partials._categoryCard', ['category' => $home->category_2->getCategory(), 'image' => $home->category_image_2->image, 'cssClass' => 'col-md-3 col-sm-6'])
         @include('front.partials._categoryCard', ['category' => $home->category_3->getCategory(), 'image' => $home->category_image_3->image, 'cssClass' => 'col-md-3 col-sm-6'])

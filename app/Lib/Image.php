@@ -12,7 +12,7 @@ class Image
   public function __construct($image, $mime = 'png')
   {
     $this->image = ImageManagerStatic::make($image);
-    $this->mime = $mime;
+    $this->mime = "png";
     $this->resize();
   }
 

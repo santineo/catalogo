@@ -1,0 +1,81 @@
+.home{
+  &-intro{
+    position: relative;
+    height: 100vh;
+
+    &-swiper{
+      background-color: #000;
+      .swiper-slide{
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        .container{
+          padding-left: 4rem;
+          position: relative;
+          top: 30%;
+
+          h2{
+            color: #fff;
+            max-width: 500px;
+            font-weight: 600;
+            @include fontSize(70px);
+            line-height: getRem(76px);
+            margin-bottom: getRem(32px);
+          }
+        }
+      }
+
+      &-nav-prev,
+      &-nav-next{
+        font-size: getRem(24px);
+        padding: getRem(24px);
+        background-color: rgba(255,255,255,0.12);
+        color: #fff;
+
+        &.swiper-button-disabled{
+          color: rgba(255,255,255,0.50);
+        }
+
+        &:not(.swiper-button-disabled){
+          transition: all 0.2s ease-in-out;
+          cursor: pointer;
+          &:hover{
+            background-color: #fff;
+            color: #000;
+          }
+        }
+      }
+      &-nav-prev{
+        margin-right: getRem(17px);
+      }
+
+      .home-intro-swiper-nav-pagination{
+        margin-left: 4rem;
+      }
+
+      .swiper-pagination-bullet{
+        background: none;
+        border: 1px solid #fff;
+        width: 19px;
+        height: 19px;
+        margin-right: 11px;
+        &.swiper-pagination-bullet-active{
+          background: #fff;
+        }
+      }
+
+    }
+  }
+
+  &-nav-container{
+    position: absolute;
+    top:20px;
+    left: 4%;
+    right: 4%;
+    background-color: #fff;
+    z-index: 100;
+    max-width: 1472px;
+    margin: 0 auto;
+  }
+}

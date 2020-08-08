@@ -1,49 +1,42 @@
 @extends('layouts.front')
 
 @section('content')
-  <section class="py-4">
-    <div class="container">
-      <h2 class="mb-4">Productos</h2>
-      <div class="row">
-        @if ($products->count())
-          <div class="col-12 mb-3">
-            @if ($category)
-              <div class="mb-2">
-                Categoría: "<strong>{{ $category->name }}</strong>"
-              </div>
-            @endif
-            <div>
-              {{-- Crear helper para estas cuentas --}}
-              @if ($products->lastPage() > 1)
-                {{ ($products->currentPage() - 1) * 24 + 1 }}-{{ $products->currentPage() * 24 < $products->total() ? $products->currentPage() * 24 : $products->total() }} de
-              @endif
-              <strong>{{ $products->total() }}</strong> resultado{{ $products->total() > 1 ? 's' : '' }}
-              @if(request('term'))
-                para <strong class="text-primary">"{{ request('term') }}"</strong>
-              @endif
-            </div>
+  <div class="bg-white" id="productsIndex">
+
+        <div class="container">
+          @include('front.partials.nav')
+        </div>
+
+
+    <section style="padding: 66px 0;">
+      <div class="container">
+        <div class="d-flex align-items-center" style="margin-bottom: 60px;">
+          <h2 class="mb-0" style="font-size: 34px; font-weight: 300;">Quesos <span style="color: #d8d8d8">(133)</span></h2>
+          <div class="ml-auto d-flex align-items-center">
+            <div style="font-size:13px; font-weight: 600;">Mostrar:</div>
+            <select class="custom-select" style="border-radius: 20px; margin-left: 16px;">
+              <option value="30" selected>30</option>
+              <option value="60">60</option>
+              <option value="90">90</option>
+            </select>
           </div>
-          @foreach($products as $product)
-            @include('front.partials._productCard', compact($product))
-          @endforeach
-          <div class="col-12 d-flex justify-content-center mt-3">
-            {{ $products->appends(request()->all())->links() }}
+          <div class="d-flex align-items-center" style="margin-left: 16px;">
+            <div style="font-size:13px; font-weight: 600;">Ordenar:</div>
+            <select class="custom-select" style="border-radius: 20px; margin-left: 16px;">
+              <option value="Popular" selected>Popular</option>
+              <option value="low_price">Menor Precio</option>
+              <option value="bigger_price">Mayor Precio</option>
+            </select>
           </div>
-        @else
-          <div class="col-12">
-            <div class="h5">
-              No se han encontrado productos
-              @if(request('term'))
-                para el término "<strong>{{ request('term') }}</strong>"
-              @endif
-              @if ($category)
-                en la categoría "<strong>{{ $category->name }}</strong>"
-              @endif
-            </div>
-          </div>
-        @endif
-      </div>
+        </div>
+        @include('front.partials._productList')
+
+
+          {{ $products->appends(request()->all())->links() }}
+
+
+        </div>
+      </section>
+
     </div>
-  </section>
-  @include('front.partials._randomProductsSection')
-@endsection
+  @endsection

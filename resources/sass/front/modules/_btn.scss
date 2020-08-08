@@ -1,0 +1,12 @@
+.btn{
+  &-rounded{
+    background-color: #fff;
+    color: #000;
+
+    border: none;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: getRem(15px) getRem(24px);
+  }
+}

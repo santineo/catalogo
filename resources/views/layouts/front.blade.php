@@ -13,7 +13,7 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/front.js') }}" defer></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- Styles -->
   <link href="{{ asset('css/front.css') }}" rel="stylesheet">
 </head>
@@ -22,9 +22,8 @@
 
     <div class="wrapper">
         <main>
-          @include('front.partials.nav')
 
-          <div class="py-4" style="min-height: calc(100vh - 170px);">
+          <div style="min-height: calc(100vh - 170px);">
             <div class="container">
               <alert :class="'mb-3'"></alert>
             </div>
@@ -33,7 +32,7 @@
 
           @include('front.partials.footer')
 
-          <cart :token="{{ isset($token) ? "'$token'" : 'false' }}" :show="{{ isset($hideCart) && $hideCart ? 'false' : 'true' }}" />
+          {{-- <cart :token="{{ isset($token) ? "'$token'" : 'false' }}" :show="{{ isset($hideCart) && $hideCart ? 'false' : 'true' }}" /> --}}
         </main>
 
     </div>

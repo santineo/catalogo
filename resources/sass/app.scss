@@ -10,5 +10,7 @@
 @import 'generales';
 
 
-// Modules
-@import 'modules/title';
+.title{
+  font-size: 2rem;
+  font-weight: 600;
+}

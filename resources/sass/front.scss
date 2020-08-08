@@ -1,16 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
-
-@import '~bootstrap/scss/bootstrap';
+@import 'mixins';
 // Variables
 @import 'variables';
+@import '~bootstrap/scss/bootstrap';
 
-@import 'front/card';
-@import 'front/navbar';
+@import 'fontello';
 
+@import 'front/modules/card';
+@import 'front/modules/navbar';
+@import 'front/modules/link';
+@import 'front/modules/btn';
+@import 'front/modules/taxCard';
+@import 'front/modules/_tax2';
+
+@import 'front/layouts/home';
 
 @import 'custom/custom';
 // Bootstrap
 
+body,a,p,div{
+  font-family: $font-family-sans-serif;
+}
 
 .c-red{
   color: $red;
@@ -33,4 +42,11 @@
 .checkout-products-list{
   max-height: 310px;
   overflow: auto;
+}
+
+.container{
+  max-width: 1310px;
+  @media (max-width: 1366px){
+    max-width: 1140px;
+  }
 }

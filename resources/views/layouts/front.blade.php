@@ -17,7 +17,7 @@
   <!-- Styles -->
   <link href="{{ asset('css/front.css') }}" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body class="bg-white">
   <div id="front">
 
     <div class="wrapper">

@@ -59,11 +59,11 @@
             <div class="border-top" style="width: 321px; margin-top: 26px; margin-bottom: 23px;"></div>
 
             <div class="text-dark" style="font-size: 12px;line-height: 1.5; max-width: 50%; margin-bottom: 28px">
-              <div>Descripción</div>
-              <p class="text-gray mb-0">Un queso que combina calidad y sabor. Ideal para picadas y copetín. Venta al Kg.</p>
+              <div class="mb-1">Descripción</div>
+              <p class="mb-0" style="color: #a3a3a3">Un queso que combina calidad y sabor. Ideal para picadas y copetín. Venta al Kg.</p>
             </div>
 
-            <div class="text-dark" style="font-size: 12px;line-height: 1.5">
+            <div class="text-dark" style="font-size: 12px;line-height: 1.5; margin-bottom: 45px;">
               <div style="margin-bottom: 15px;">Cantidad</div>
               <div class="d-inline-block border">
                 <div class="d-flex align-items-center" style="font-weight: 600; padding: 6px 11px">
@@ -73,11 +73,19 @@
                 </div>
               </div>
             </div>
+
+            <a href="#" class="btn btn-secondary btn-lg text-white text-uppercase" style="font-size: 13px; font-weight: 600; padding: 15px 53px; border-radius: 50px;">Agregar Carrito</a>
+
           </div>
         </div>
       </article>
-
       <section class="border-top" style="padding: 55px 0 135px 0;">
+        <div class="container">
+          <div class="d-flex align-items-center" style="margin-bottom: 70px;">
+            <h2 class="mb-0" style="font-size: 29px; font-weight: 300;">Productos relacionados</h2>
+            <a href="#" class="btn btn-rounded border ml-auto">Ver Todos</a>
+          </div>
+
         @include('front.partials._productList')
       </section>
     </div>

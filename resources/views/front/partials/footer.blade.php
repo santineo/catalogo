@@ -6,13 +6,7 @@
         <h2 class="text-primary" style="font-size: 19px; font-weight:500; margin-bottom: 42px;">La casa del Salamín</h2>
         <p style="color:#808080; font-size: 13px; line-height: 2; margin-bottom: 27px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-        <div class="d-flex">
-          <div><a href="#">F</a></div>
-          <div style="margin-left: 33px;"><a href="#">T</a></div>
-          <div style="margin-left: 33px;"><a href="#">L</a></div>
-          <div style="margin-left: 33px;"><a href="#">I</a></div>
-          <div style="margin-left: 33px;"><a href="#">Y</a></div>
-        </div>
+        @include('front.partials._social')
       </div>
       <div class="col-lg-4 col-md-6 ml-auto">
         <div class="d-flex justify-content-between">

@@ -2,29 +2,44 @@
   <div>
     <div v-if="Cart.products.length">
 
-      <div class="d-none d-md-block text-right border-bottom pb-1">Precio</div>
+      <h2 style="margin-bottom: 66px; font-size: 20px; font-weight:600;" class="text-dark">Carrito</h2>
+      <div class="row" style="font-size: 14px; color: #c1c1c1; margin-bottom: 40px;">
+        <div class="col-7">Productos</div>
+        <div class="col-2 text-center">Cantidad</div>
+        <div class="col-2 text-center">Precio</div>
+        <div class="col-1"></div>
+      </div>
 
-      <div class="row py-3 border-bottom" v-for="product in Cart.products">
-        <div class="col-md-10 d-block d-md-flex">
-          <img :src="product.data.image ? product.data.image.thumb : Cart.getProductNoImage('thumb')" alt="" style="max-width: 125px;">
-          <div class="ml-3 pt-1 d-flex flex-column">
-            <h5 class="ellipsis-2"><a :href="product.data.public_path" class="font-weight-bold">{{ product.data.title }}</a></h5>
-            <div class="small mb-1" v-if="product.data.brand">Marca: <a :href="getBrandUrl(product.data.brand_id)">{{ product.data.brand.name }}</a></div>
-            <div class="small mb-1">Categoría: <a :href="getCategoryUrl(product.data.category.id)">{{ product.data.category.name }}</a></div>
-            <div class="d-flex small mt-auto pb-1 justify-content-center justify-content-md-center">
-              <div class="pr-3 border-right">
-                <span>Cantidad: </span>
-                <strong>{{ product.quantity }}</strong>
-                <small>{{ product.data.selling_type == 2 ? 'grs.' : '' }}</small>
-              </div>
-              <div class="px-3 border-right"><a href="javascript: void(0)" @click.prevent="Cart.confirmation(product.id, 'modify')">Modificar</a></div>
-              <div class="px-3 border-right"><a href="javascript: void(0)" @click.prevent="Cart.confirmation(product.id, 'destroy')" >Eliminar</a></div>
+      <div class="row align-items-center" style="margin-bottom: 38px;" v-for="product in Cart.products">
+
+        <div class="col-7">
+          <div class="d-flex align-items-center">
+            <div style="width: 71px; height: 71px; border-radius: 100%; overflow: hidden; background-position: center center; background-repeat: no-repeat; background-size: 100%" :style="`background-image: url(${product.data.image ? product.data.image.thumb : Cart.getProductNoImage('thumb')})`" class="position-relative"></div>
+            <div style="margin-left:50px">
+              <h3 style="font-size: 16px;font-weight: 600;" class="mb-1">{{ product.data.title }}</h3>
+              <div style="color: #c4c4c4; font-size:13px; font-weight: 300;">#{{ product.data.id }}</div>
             </div>
           </div>
         </div>
-        <div class="col-md-2 text-right c-red font-weight-bold d-flex d-md-block justify-content-center align-items-center">
-          <div class="mr-1 mr-md-0">{{ product.data.price }} €</div>
-          <div class="text-right" style="line-height: 0.7;"><small>x {{ product.data.price_type }}</small></div>
+
+        <div class="col-2">
+          <div class="text-dark text-center" style="font-size: 16px;line-height: 1.5;">
+            <div class="d-inline-block border" style="border-radius: 50px;">
+              <div class="d-flex align-items-center" style=" padding: 13px 30px">
+                <div class="text-dark" style="font-size: 20px">-</div>
+                <div style="padding: 0 21px;font-weight: 600;">1</div>
+                <div class="text-dark" style="font-size: 20px">+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-2 text-center">
+          <div style="font-weight: 600; font-size: 16px;">${{ product.data.price.toFixed(2) }}</div>
+        </div>
+
+        <div class="col-1 text-right">
+          <a href="javascript: void(0)" class="text-dark" style="font-size: 20px" @click.prevent="Cart.confirmation(product.id, 'destroy')"><i class="fas fa-times"></i></a>
         </div>
       </div>
 

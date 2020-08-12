@@ -1,59 +1,101 @@
 <template>
-  <div>
+  <div style="padding-right: 33px;">
     <form method="post" @submit.prevent="onSubmit" @keydown="onKeyDown">
-    <h3>Tus datos</h3>
-    <div class="card rounded-0 px-3 py-4">
 
-      <div class="form-group col-sm-12 text-center mt-4 mb-5">
-        <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" id="ship_method_local" name="ship_method" value="1" v-model="form.ship_method" class="custom-control-input">
-          <label class="custom-control-label" for="ship_method_local">Retirar por el local</label>
+      <h2 style="text-transform: uppercase; margin-bottom: 51px;font-size: 20px; font-weight: 600;">Formulario de Compra</h2>
+
+      <div>
+        <h3 style="font-size: 14px; font-weight:600; color: #3e3e3e; margin-bottom: 22px;">Datos de Contacto</h3>
+        <div class="form-group" style="margin-bottom: 25px;">
+          <label for="email" class="sr-only">Email</label>
+          <input type="email" name="email" v-model="form.email" class="form-control" placeholder="Email" style="border-radius: 30px; height: 49px; padding-left: 28px; font-size: 13px;">
+          <span class="text-danger small" v-if="form.errors.has('email')" v-text="form.errors.get('email')"></span>
         </div>
-        <div class="custom-control custom-radio custom-control-inline">
-          <input type="radio" id="ship_method_address" name="ship_method" value="2" v-model="form.ship_method" class="custom-control-input">
-          <label class="custom-control-label" for="ship_method_address">Envío a domicilio</label>
-        </div>
+        <div style="font-size: 14px;"><span style="font-weight: 600;">¿Ya tenes una cuenta?.</span> <a href="/login" class="text-dark">Iniciá sesión</a></div>
       </div>
-      <div class="row">
 
-        <div class="form-group col-sm-6">
-          <label for="name">Nombre*</label>
-          <input type="text" name="name" v-model="form.name" class="form-control">
+      <h2 style="text-transform: uppercase; margin-top: 65px; font-size: 20px; font-weight: 600;">Dirección de Entrega</h2>
+      <div style="margin-top: 18px;">
+        <h3 style="font-size: 14px; font-weight:600; color: #3e3e3e; margin-bottom: 22px;">Datos del Destinatario</h3>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="name" class="sr-only">Nombre</label>
+          <input type="text"  name="name" v-model="form.name" class="form-control" placeholder="Nombre" style="border-radius: 30px; height: 49px; padding-left: 28px; font-size: 13px;">
           <span class="text-danger small" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
         </div>
 
-        <div class="form-group col-sm-6">
-          <label for="email">Email*</label>
-          <input type="email" name="email" v-model="form.email" class="form-control">
-          <span class="text-danger small" v-if="form.errors.has('email')" v-text="form.errors.get('email')"></span>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="last_name" class="sr-only">Apellido</label>
+          <input type="text"  name="last_name" v-model="form.last_name" class="form-control" placeholder="Apellido" style="border-radius: 30px; height: 49px; padding-left: 28px; font-size: 13px;">
+          <span class="text-danger small" v-if="form.errors.has('last_name')" v-text="form.errors.get('last_name')"></span>
         </div>
 
-        <div class="form-group col-sm-6" v-if="form.ship_method == 2">
-          <label for="address">Dirección*</label>
-          <input type="text" v-model="form.address" name="address" class="form-control">
-          <span class="text-danger small" v-if="form.errors.has('address')" v-text="form.errors.get('address')"></span>
-        </div>
-
-        <div class="form-group col-sm-6" v-if="form.ship_method == 2">
-          <label for="phone">Teléfono*</label>
-          <input type="text" v-model="form.phone" name="phone" class="form-control">
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="phone" class="sr-only">Teléfono</label>
+          <input type="text"  name="phone" v-model="form.phone" class="form-control" placeholder="Teléfono" style="border-radius: 30px; height: 49px; padding-left: 28px; font-size: 13px;">
           <span class="text-danger small" v-if="form.errors.has('phone')" v-text="form.errors.get('phone')"></span>
         </div>
 
-        <div class="form-group col-sm-12">
-          <label for="additional_info">Información Adicional</label>
-          <textarea name="additional_info" v-model="form.additional_info" id="additional_info" class="form-control" rows="3" cols="80"></textarea>
-          <span class="text-danger small" v-if="form.errors.has('name')" v-text="form.errors.get('name')"></span>
+      </div>
+
+      <div style="margin-top: 46px;">
+        <h3 style="font-size: 14px; font-weight:600; color: #3e3e3e; margin-bottom: 22px;">Domicilio del Destinatario</h3>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="country" class="sr-only">País</label>
+          <input type="text" name="country" v-model="form.country" class="form-control" value="Argentina" disabled placeholder="País" style="border-radius: 30px; height: 49px; padding-left: 28px; font-size: 13px;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="street" class="sr-only">Calle</label>
+          <input type="text"  name="street" v-model="form.street" class="form-control" placeholder="Calle" style="border-radius: 30px; height: 49px; padding-left: 28px; font-size: 13px;">
+          <span class="text-danger small" v-if="form.errors.has('street')" v-text="form.errors.get('street')"></span>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label for="number" class="sr-only">Número</label>
+              <input type="text"  name="number" v-model="form.number" class="form-control" placeholder="Número" style="border-radius: 30px; height: 49px; padding-left: 28px; font-size: 13px;">
+              <span class="text-danger small" v-if="form.errors.has('number')" v-text="form.errors.get('number')"></span>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label for="dpto" class="sr-only">Dpto</label>
+              <input type="text"  name="dpto" v-model="form.dpto" class="form-control" placeholder="Dpto" style="border-radius: 30px; height: 49px; padding-left: 28px; font-size: 13px;">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label for="city" class="sr-only">Ciudad</label>
+              <input type="text"  name="city" v-model="form.city" class="form-control" placeholder="Ciudad" style="border-radius: 30px; height: 49px; padding-left: 28px; font-size: 13px;">
+              <span class="text-danger small" v-if="form.errors.has('city')" v-text="form.errors.get('city')"></span>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label for="cp" class="sr-only">Código Postal</label>
+              <input type="text"  name="cp" v-model="form.cp" class="form-control" placeholder="Código Postal" style="border-radius: 30px; height: 49px; padding-left: 28px; font-size: 13px;">
+              <span class="text-danger small" v-if="form.errors.has('cp')" v-text="form.errors.get('cp')"></span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label for="locality" class="sr-only">Localidad</label>
+          <input type="text"  name="locality" v-model="form.locality" class="form-control" placeholder="Localidad" style="border-radius: 30px; height: 49px; padding-left: 28px; font-size: 13px;">
+          <span class="text-danger small" v-if="form.errors.has('locality')" v-text="form.errors.get('locality')"></span>
         </div>
 
       </div>
 
-    </div>
+      <div class="text-right" style="margin-top: 64px;">
+        <button type="button" class="btn btn-secondary" style="font-size: 13px; font-weight: 600; text-transform: uppercase; border-radius: 50px; padding: 15px 104px;">Continuar</button>
+      </div>
 
-    <div class="text-center text-sm-right mt-3">
-      <button type="submit" class="btn btn-primary">Pedir</button>
-    </div>
-  </form>
+    </form>
   </div>
 </template>
 
@@ -63,12 +105,17 @@ export default {
   data(){
     return {
       form: new Form({
-        name: '',
         email: '',
-        address: '',
+        name: '',
+        last_name: '',
         phone: '',
-        additional_info: '',
-        ship_method: 1
+        country: '',
+        street: '',
+        number: '',
+        dpto: '',
+        city: '',
+        cp: '',
+        localit: ''
       }, this.getToken),
       loading: false,
       sended: false
@@ -97,14 +144,11 @@ export default {
     },
     onKeyDown(e){
       if(e.keyCode == 13 && e.target.tagName != 'TEXTAREA'){
-         e.preventDefault();
-         return false;
-       }
+        e.preventDefault();
+        return false;
+      }
       this.form.errors.clear(e.target.name)
     }
   }
 }
 </script>
-
-<style lang="css">
-</style>

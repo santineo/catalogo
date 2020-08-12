@@ -65,19 +65,7 @@
               <p class="mb-0" style="color: #a3a3a3">{!! $product->description !!}</p>
             </div>
 
-            <div class="text-dark" style="font-size: 12px;line-height: 1.5; margin-bottom: 45px;">
-              <div style="margin-bottom: 15px;">Cantidad</div>
-              <div class="d-inline-block border">
-                <div class="d-flex align-items-center" style="font-weight: 600; padding: 6px 11px">
-                  <div style="width: 23px; height: 23px;" class="bg-dark text-white d-flex align-items-center justify-content-center">-</div>
-                  <div style="padding: 0 17px;">1</div>
-                  <div style="width: 23px; height: 23px;" class="bg-dark text-white d-flex align-items-center justify-content-center">+</div>
-                </div>
-              </div>
-            </div>
-
-            <a href="#" class="btn btn-secondary btn-lg text-white text-uppercase" style="font-size: 13px; font-weight: 600; padding: 15px 53px; border-radius: 50px;">Agregar Carrito</a>
-
+            <product-checkout :product="{{ $product->toJson() }}"/>
           </div>
         </div>
       </article>

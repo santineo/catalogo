@@ -1,20 +1,18 @@
 <template>
   <div>
-    <div class="mb-2">Cantidad <small>(en {{ orderProduct.getUnityType() }})</small></div>
-    <div class="mb-3">
-      <div class="d-flex align-items-center">
-        <button type="button" @click.prevent="minus" :disabled="!canMinus" class="btn btn-primary btn-sm"><i class="fas fa-minus"></i></button>
-        <div class="font-weight-bold mx-3">{{ orderProduct.quantity }}</div>
-        <button type="button" @click.prevent="plus" :disabled="!canPlus" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></button>
+    <div class="text-dark" style="font-size: 12px;line-height: 1.5; margin-bottom: 45px;">
+      <div style="margin-bottom: 15px;">Cantidad</div>
+      <div class="d-inline-block border">
+        <div class="d-flex align-items-center" style="font-weight: 600; padding: 6px 11px">
+          <button type="button" @click.prevent="minus" :disabled="!canMinus" style="width: 23px; height: 23px;" class="bg-dark text-white d-flex align-items-center justify-content-center">-</button>
+          <div style="padding: 0 17px;">{{ orderProduct.quantity }}</div>
+          <button type="button" @click.prevent="plus" :disabled="!canPlus" style="width: 23px; height: 23px;" class="bg-dark text-white d-flex align-items-center justify-content-center">+</button>
+        </div>
       </div>
     </div>
 
-    <div class="d-flex align-items-center">
-      <button type="button" class="btn btn-success" :disabled="loading" @click.prevent="pushEvent">{{ buttonLabel }}</button>
-      <div class="p-3 border bg-light d-inline-block ml-auto">
-        Total: <strong>{{ orderProduct.getTotal() }}€</strong>
-      </div>
-    </div>
+    <button type="button" class="btn btn-secondary btn-lg text-white text-uppercase" style="font-size: 13px; font-weight: 600; padding: 15px 53px; border-radius: 50px;":disabled="loading" @click.prevent="pushEvent">Agregar Carrito</button>
+
 
   </div>
 </template>

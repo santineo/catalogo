@@ -30,7 +30,9 @@
             @yield('content')
           </div>
 
-          @include('front.partials.footer')
+          @if (!isset($noFooter))
+            @include('front.partials.footer')
+          @endif
 
           {{-- <cart :token="{{ isset($token) ? "'$token'" : 'false' }}" :show="{{ isset($hideCart) && $hideCart ? 'false' : 'true' }}" /> --}}
         </main>

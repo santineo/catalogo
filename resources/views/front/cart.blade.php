@@ -65,7 +65,7 @@
             <div style="margin-right: 72px; font-size: 16px;">
               <span>Total:</span> <strong style="margin-left: 14px;">$159.98</strong>
             </div>
-            <a href="#" class="btn btn-secondary btn-lg text-white text-uppercase" style="font-size: 13px; font-weight: 600; padding: 15px 53px; border-radius: 50px;">TRAMITAR PEDIDO</a>
+            <a href="{{ route('front.checkout.create') }}" class="btn btn-secondary btn-lg text-white text-uppercase" style="font-size: 13px; font-weight: 600; padding: 15px 53px; border-radius: 50px;">TRAMITAR PEDIDO</a>
           </div>
         </div>
       </section>

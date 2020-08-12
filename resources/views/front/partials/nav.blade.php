@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-lg">
-  <a class="navbar-brand" href="#">TIENDA DE QUESOS</a>
+  {{-- @if ($configs->logo->image)
+    <img src="{{ $configs->logo->image }}" style="max-width:180px; max-height: 80px;" alt="">
+  @endif --}}
+  <h1><a class="navbar-brand" href="{{ route('home') }}">{{ $configs->site_name->value }}</a></h1>
   @if (isset($noMenu))
     <div class="ml-auto text-uppercase" style="font-size: 14px; font-weight: 600;">{!! $noMenu !!}</div>
   @else
@@ -14,8 +17,9 @@
             Productos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Quesos</a>
-            <a class="dropdown-item" href="#">Embutidos</a>
+            @foreach (App\Category::all() as $key => $category)
+              <a class="dropdown-item" href="{{ route('front.products.index', ['category' => $category->id]) }}">{{ Str::limit($category->name, 20) }}</a>
+            @endforeach
           </div>
         </li>
         <li class="nav-item active">
@@ -25,13 +29,13 @@
           <a class="nav-link" href="#">Preguntas Frecuentes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contacto</a>
+          <a class="nav-link" href="{{ route('front.contacts.create') }}">Contacto</a>
         </li>
         <li class="nav-item nav-item-icon">
           <a class="nav-link nav-link-icon" href="#"><i class="icon-search"></i></a>
         </li>
         <li class="nav-item nav-item-icon">
-          <a class="nav-link nav-link-icon" href="#"><i class="icon-basket"></i></a>
+          <a class="nav-link nav-link-icon" href="{{ route('front.cart') }}"><i class="icon-basket"></i></a>
         </li>
       </ul>
     </div>

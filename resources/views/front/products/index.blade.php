@@ -11,7 +11,7 @@
     <section style="padding: 66px 0;">
       <div class="container">
         <div class="d-flex align-items-center" style="margin-bottom: 60px;">
-          <h2 class="mb-0" style="font-size: 34px; font-weight: 300;">Quesos <span style="color: #d8d8d8">(133)</span></h2>
+          <h2 class="mb-0" style="font-size: 34px; font-weight: 300;">{{ isset($category) && $category ? $category->name : 'Nuestro Productos' }} <span style="color: #d8d8d8">({{ $products->total() }})</span></h2>
           <div class="ml-auto d-flex align-items-center">
             <div style="font-size:13px; font-weight: 600;">Mostrar:</div>
             <select class="custom-select" style="border-radius: 20px; margin-left: 16px;">

@@ -29,7 +29,7 @@ Route::prefix('checkout')->group(function(){
 });
 
 Route::prefix('cart')->group(function(){
-  Route::get('/', 'CartController@cart');
+  Route::get('/', 'CartController@cart')->name('front.cart');
   Route::post('getCart', 'CartController@getCart');
   Route::post('add', 'CartController@add');
   Route::post('update', 'CartController@update');

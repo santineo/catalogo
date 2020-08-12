@@ -20,9 +20,9 @@
       <div class="container">
         <div class="d-flex align-items-center" style="margin-bottom: 70px;">
           <h2 class="mb-0" style="font-size: 29px; font-weight: 300;">Nuestros productos</h2>
-          <a href="#" class="btn btn-rounded border ml-auto">Ver Todos</a>
+          <a href="{{ route('front.products.index') }}" class="btn btn-rounded border ml-auto">Ver Todos</a>
         </div>
-        @include('front.partials._productList')
+        @include('front.partials._productList', compact('products'))
       </section>
 
     </div>

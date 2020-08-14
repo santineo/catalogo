@@ -16,7 +16,7 @@ class FrontComposer
     public function compose(View $view)
     {
       $configs = new \stdClass();
-      $DBConfigs = Config::whereIn('index', ['site_name', 'logo', 'instagram', 'facebook', 'youtube', 'pinterest',])->get();
+      $DBConfigs = Config::whereIn('index', ['site_name', 'logo', 'email', 'phone', 'description', 'instagram', 'facebook', 'youtube', 'pinterest', 'linkedin'])->get();
 
       foreach ($DBConfigs as $key => $config) {
         $configs->{$config->index} = $config;

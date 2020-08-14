@@ -7,9 +7,17 @@
       background-color: #000;
       .swiper-slide{
         width: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
+        &-background{
+          position: absolute;
+          top:0;
+          left:0;
+          right:0;
+          bottom:0;
+          opacity: 0.4;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
         .container{
           padding-left: 4rem;
           position: relative;

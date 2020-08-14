@@ -1,10 +1,13 @@
-const swiper = new Swiper('.swiper-container', {
-  navigation: {
+const homeIntroSwiperParams = {};
+
+if($('.home-intro-swiper').find('.swiper-slide').length > 1){
+  homeIntroSwiperParams.navigation = {
     nextEl: '.home-intro-swiper-nav-next',
     prevEl: '.home-intro-swiper-nav-prev',
-  },
-  pagination: {
+  };
+  homeIntroSwiperParams.pagination = {
     el: '.swiper-pagination',
     clickable: true
-  },
-});
+  };
+}
+const swiper = new Swiper('.home-intro-swiper', homeIntroSwiperParams);

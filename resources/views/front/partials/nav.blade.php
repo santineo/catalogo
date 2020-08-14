@@ -22,12 +22,12 @@
             @endforeach
           </div>
         </li>
-        <li class="nav-item active">
+        {{-- <li class="nav-item active">
           <a class="nav-link" href="#">Nosotros</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Preguntas Frecuentes</a>
-        </li>
+        </li> --}}
         <li class="nav-item">
           <a class="nav-link" href="{{ route('front.contacts.create') }}">Contacto</a>
         </li>

@@ -24,7 +24,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['layouts.front', 'front.partials.nav'], 'App\Http\View\Composers\FrontComposer');
+        View::composer(['layouts.front', 'front.partials.nav', 'front.partials.footer', 'front.partials._social'], 'App\Http\View\Composers\FrontComposer');
         View::composer(['front.home'], 'App\Http\View\Composers\HomeComposer');
     }
 }

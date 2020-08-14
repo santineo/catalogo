@@ -16,7 +16,7 @@ class HomeComposer
     public function compose(View $view)
     {
       $home = new \stdClass();
-      $homeAttributes = ['category_1', 'category_image_1', 'category_2', 'category_image_2', 'category_3', 'category_image_3', 'category_4', 'category_image_4'];
+      $homeAttributes = ['category_1', 'category_image_1', 'category_2', 'category_image_2', 'slider_title', 'slider_image', 'slider_button_link', 'slider_button_text'];
       $DBConfigs = Config::whereIn('index', $homeAttributes)->get();
 
       foreach ($homeAttributes as $key => $index) {

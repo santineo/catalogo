@@ -1,10 +1,9 @@
 <div class="bg-white">
-
   <footer class="container border-top" style="padding: 55px 0">
     <div class="row">
       <div class="col-lg-4 col-md-6">
-        <h2 class="text-primary" style="font-size: 19px; font-weight:500; margin-bottom: 42px;">La casa del Salamín</h2>
-        <p style="color:#808080; font-size: 13px; line-height: 2; margin-bottom: 27px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h2 class="text-primary" style="font-size: 19px; font-weight:500; margin-bottom: 42px;">{{ $configs->site_name->value }}</h2>
+        <p style="color:#808080; font-size: 13px; line-height: 2; margin-bottom: 27px">{{ $configs->description->value }}</p>
 
         @include('front.partials._social')
       </div>
@@ -14,21 +13,25 @@
           <div>
             <h4 style="margin-bottom: 30px; font-size:14px; font-weight:600;" class="text-primary">Tienda</h4>
             <ul class="list-unstyled">
-              @for ($i=0; $i < 4; $i++)
-                <li style="font-size: 13px; font-weight: 500; margin-bottom: 10px;" ><a href="#" class="text-dark">Quesos</a></li>
-              @endfor
+              @foreach (App\Category::take(4)->get() as $key => $category)
+                <li style="font-size: 13px; font-weight: 500; margin-bottom: 10px;" ><a href="{{ route('front.products.index', ['category' => $category->id]) }}" class="text-dark">{{ Str::limit($category->name, 20) }}</a></li>
+              @endforeach
             </ul>
           </div>
 
-          <div>
-            <h4 style="margin-bottom: 30px; font-size:14px; font-weight:600;" class="text-primary">Contacto</h4>
-            <ul class="list-unstyled">
-
-              <li style="font-size: 13px; font-weight: 500; margin-bottom: 10px;"><a href="mailto:info@e-shop.com" class="text-dark">info@e-shop.com</a></li>
-              <li style="font-size: 13px; font-weight: 500; margin-bottom: 10px;">Tel: <a href="tel:+1131138138" class="text-dark">+1131138138</a></li>
-
-            </ul>
-          </div>
+          @if ($configs->email->value || $configs->phone->value)
+            <div>
+              <h4 style="margin-bottom: 30px; font-size:14px; font-weight:600;" class="text-primary">Contacto</h4>
+              <ul class="list-unstyled">
+                @if ($configs->email->value)
+                  <li style="font-size: 13px; font-weight: 500; margin-bottom: 10px;"><a href="mailto:{{ $configs->email->value }}" class="text-dark">{{ $configs->email->value }}</a></li>
+                @endif
+                @if ($configs->phone->value)
+                  <li style="font-size: 13px; font-weight: 500; margin-bottom: 10px;">Tel: <a href="tel:{{ $configs->phone->value }}" class="text-dark">{{ $configs->phone->value }}</a></li>
+                @endif
+              </ul>
+            </div>
+          @endif
 
         </div>
       </div>

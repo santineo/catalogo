@@ -12,10 +12,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 
   <!-- Scripts -->
-  <script src="{{ asset('js/front.js') }}" defer></script>
+  <script src="{{ mix('js/front.js') }}" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!-- Styles -->
-  <link href="{{ asset('css/front.css') }}" rel="stylesheet">
+  <link href="{{ mix('css/front.css') }}" rel="stylesheet">
 </head>
 <body class="bg-white">
   <div id="front">

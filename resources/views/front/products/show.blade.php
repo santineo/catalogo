@@ -23,10 +23,10 @@
         <div class="row">
           <div class="col-6">
             <div class="d-flex">
-              <div class="text-center" style="max-width: 476px">
-                <img src="{{ $product->getPrimaryImage('large') }}" alt="" style="max-width: 476px; max-height: 476px;">
+              <div class="text-center" style="max-width: 100%; width: 476px">
+                <img src="{{ $product->getPrimaryImage('large') }}" alt="" style="max-width: 100%; width: 476px; max-height: 476px;">
               </div>
-              <div style="margin-left: 12px">
+              {{-- <div style="margin-left: 12px">
                 <div class="text-center" style="max-width: 109px; margin-bottom:10px; opacity: 0.7;">
                   <img src="{{ $product->getPrimaryImage('large') }}" alt="" class="d-block" style="max-width: 109px; max-height: 109px;">
                 </div>
@@ -36,7 +36,7 @@
                 <div class="text-center" style="max-width: 109px; margin-bottom:10px; opacity: 0.7;">
                   <img src="{{ $product->getPrimaryImage('large') }}" alt="" class="d-block" style="max-width: 109px; max-height: 109px;">
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
           <div class="col-6">

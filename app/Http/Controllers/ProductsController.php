@@ -15,7 +15,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::brand(request('brand', false))->search(request('term', false))->category(request('category', false))->paginate(24);
+        $products = Product::withBrand(request('brand', false))->withCategory(request('category', false))->search(request('term', false))->paginate(24);
         $category = request('category') ? Category::find(request('category')) : false;
 
         return view('front.products.index', compact('products', 'category'));

@@ -63,7 +63,7 @@ class Product extends Model
      *
      * @return Builder
      */
-    public function scopeCategory($query, $categoryId = false)
+    public function scopeWithCategory($query, $categoryId = false)
     {
       if(!$categoryId) return $query;
 
@@ -75,7 +75,7 @@ class Product extends Model
      *
      * @return Builder
      */
-    public function scopeBrand($query, $brandId = false)
+    public function scopeWithBrand($query, $brandId = false)
     {
       if(!$brandId) return $query;
 

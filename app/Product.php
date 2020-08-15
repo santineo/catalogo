@@ -71,6 +71,18 @@ class Product extends Model
     }
 
     /**
+     * Scope to search products by brand id
+     *
+     * @return Builder
+     */
+    public function scopeBrand($query, $brandId = false)
+    {
+      if(!$brandId) return $query;
+
+      return $query->where('brand_id', $brandId);
+    }
+
+    /**
      * Scope to get most sellers products (more count of orders)
      *
      * @return Builder

@@ -1,0 +1,131 @@
+.site-navbar{
+
+  position: relative;
+  width: 100%;
+  max-width: 1472px;
+  margin: 0 auto;
+  background-color: $white;
+
+  .navbar{
+    padding: getRem(46px) 0;
+
+    &-brand{
+      @include fontSize(19px);
+      text-transform: uppercase;
+      color: $black;
+      font-weight: 600;
+      padding: 0;
+    }
+
+    &-no-menu{
+      font-size: getRem(14px);
+      font-weight: 600;
+    }
+
+    .nav-item{
+      margin-right: getRem(20px);
+
+      &:first-child{
+        margin-right: getRem(60px);
+      }
+
+      .nav-link{
+        @include fontSize(14px);
+
+        &.dropdown-toggle{
+          font-weight: 600;
+        }
+      }
+
+    }
+
+    &-icon{
+      font-size: getRem(22px);
+      padding: 0;
+      position: relative;
+      top: getRem(-2px);
+      margin-left: getRem(15px);
+
+      .cart{
+        &-products-count{
+          position: absolute;
+          border-radius: 100%;
+          background-color: $purple;
+          color: $white;
+          width: 16px;
+          height: 16px;
+          top: 0;
+          right: getRem(-4px);
+          font-size: getRem(10px);
+          text-align: center;
+          line-height: 1.9;
+
+          &.more-10{
+            width: 18px;
+            height: 18px;
+            right: getRem(-6px);
+          }
+        }
+      }
+    }
+
+    &-search{
+      position: absolute;
+      left: getRem(-30px);
+      top: 0;
+      bottom: 0;
+      right: getRem(-30px);
+      background-color: $white;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+
+      form{
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      &-input{
+        border: none;
+        border-bottom: 1px solid $gray-ce;
+        color: $black;
+        width: 100%;
+        max-width: 600px;
+        font-size: getRem(24px);
+        padding: getRem(10px) 0;
+        &::placeholder {
+          color: $black;
+        }
+      }
+
+      &-submit{
+        background: transparent;
+        border: 0;
+        color: $black;
+        transition: color 0.3s ease-in-out;
+        margin-left: auto;
+        font-size: getRem(54px);
+
+        &:disabled{
+          color: $gray-ee;
+        }
+
+        &:not(:disabled){
+          &:hover{
+            color: $purple;
+          }
+        }
+      }
+
+      &-close{
+        color: $gray-80;
+        font-size: getRem(30px);
+        margin-left: getRem(10px);
+        &:hover{
+          color: $black;
+        }
+      }
+    }
+  }
+}

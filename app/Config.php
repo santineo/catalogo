@@ -13,6 +13,8 @@ class Config extends Model
 
     protected $with = ['uploads'];
 
+    public $category = null;
+
     /**
      * Relationship with uploads
      *
@@ -38,8 +40,9 @@ class Config extends Model
      *
      * @return category
      */
-    public function getCategory()
+    public function category()
     {
-      return Category::find($this->value);
+      $this->category = Category::find($this->value);
+      return $this->category;
     }
 }

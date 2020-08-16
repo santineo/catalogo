@@ -155,6 +155,16 @@ class Product extends Model
     }
 
     /**
+     * Accesor to formatted price
+     *
+     * @return string
+     */
+    public function getFormattedPriceAttribute()
+    {
+      return env('APP_CURRENCY', '$') . number_format($this->price, 2, ',', ' ');
+    }
+
+    /**
      * Accesor to Get first upload
      *
      * @return Intance of Upload or null

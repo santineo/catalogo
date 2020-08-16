@@ -1,0 +1,18 @@
+@import 'products/product-article';
+
+.products-show{
+  &-related{
+    padding: getRem(55px) 0 getRem(135px) 0;
+
+    &-title{
+      font-size: getRem(29px);
+      font-weight: 300;
+      margin-bottom: 0;
+    }
+
+    &-list{
+      margin-top: getRem(70px);
+    }
+  }
+
+}

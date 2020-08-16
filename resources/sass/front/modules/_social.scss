@@ -1,0 +1,12 @@
+.social{
+  display: flex;
+  &-item{
+    font-size: getRem(18px);
+    color: $gray-ce;
+
+    &:not(:first-child){
+      margin-left: getRem(33px);
+    }
+
+  }
+}

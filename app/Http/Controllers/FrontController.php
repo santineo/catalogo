@@ -15,7 +15,7 @@ class FrontController extends Controller
     public function home()
     {
       $products = Product::withStock()->inRandomOrder()->take(12)->get();
-      return view('front.home', compact('products'));
+      return view('front.home.view', compact('products'));
     }
 
 }

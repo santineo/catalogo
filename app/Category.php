@@ -42,6 +42,16 @@ class Category extends Model
      *
      * @return Builder
      */
+    public function scopeProductORder($query)
+    {
+      return $query->has('products')->withCount('products')->orderBy('products_count', 'desc');
+    }
+
+    /**
+     * Scope to search products by title
+     *
+     * @return Builder
+     */
     public function scopeSearch($query, $term = false)
     {
       if(!$term) return $query;

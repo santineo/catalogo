@@ -4,9 +4,9 @@
 
   <div id="checkout">
 
-    <div class="container">
-      @include('front.partials.nav', ['noMenu' => 'Compra 100% protegida'])
-    </div>
+
+    @include('front.partials.nav', ['noMenu' => 'Compra 100% protegida'])
+
 
     <section style="padding-top: 66px; padding-bottom: 123px; border-top: 1px solid #d8d8d8;">
       <div class="container">

@@ -1,0 +1,18 @@
+.breadcrumb{
+  margin-top: getRem(30px);
+  background: none;
+  &-item{
+    font-size: getRem(14px);
+    &:first-child{
+      font-size: getRem(16px);
+    }
+
+    &.active{
+      color: $black;
+    }
+
+    a{
+      color: $gray-b2;
+    }
+  }
+}

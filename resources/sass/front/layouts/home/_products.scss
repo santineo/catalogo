@@ -1,0 +1,12 @@
+.home-products{
+  padding-top: getRem(50px);
+
+  &-title{
+    font-size: getRem(29px);
+    font-weight: 300;
+  }
+
+  &-list{
+    margin-top: getRem(70px);
+  }
+}

@@ -1,0 +1,89 @@
+.home-slider{
+  height: 100vh;
+  max-height: 800px;
+  background-color: $black;
+  .swiper{
+    height: 100%;
+    width: 100%;
+
+    &-slide{
+      width: 100%;
+
+      .container{
+        padding-left: 4rem;
+        position: relative;
+        top: 30%;
+      }
+
+      &-background{
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        opacity: 0.4;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+
+      &-title{
+        color: $white;
+        max-width: getRem(500px);
+        font-weight: 600;
+        @include fontSize(70px);
+        line-height: getRem(76px);
+        margin-bottom: getRem(48px);
+      }
+
+    }
+
+    &-nav{
+      width: 100%;
+      position: absolute;
+      bottom: getRem(60px);
+      z-index: 50;
+
+      &-prev,
+      &-next{
+        font-size: getRem(24px);
+        padding: getRem(24px);
+        background-color: rgba(255,255,255,0.12);
+        color: $white;
+
+        &.swiper-button-disabled{
+          color: rgba(255,255,255,0.50);
+        }
+
+        &:not(.swiper-button-disabled){
+          transition: all 0.2s ease-in-out;
+          cursor: pointer;
+          &:hover{
+            background-color: $white;
+            color: $black;
+          }
+        }
+      }
+      &-prev{
+        margin-right: getRem(17px);
+      }
+
+    }
+
+    &-pagination{
+      margin-left: 4rem;
+      position: relative;
+      &-bullet{
+        background: none;
+        border: 1px solid $white;
+        width: getRem(19px);
+        height: getRem(19px);
+        margin-right: getRem(11px);
+        &.swiper-pagination-bullet-active{
+          background: $white;
+        }
+      }
+    }
+
+  }
+}

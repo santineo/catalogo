@@ -3,9 +3,9 @@
 @section('content')
   <div id="contact">
 
-    <div class="container">
+
       @include('front.partials.nav')
-    </div>
+    
 
     <section class="container" style="padding-top: 66px; padding-bottom: 123px;">
       <h2 style="font-size: 34px; font-weight: 300; margin-bottom: 60px;">Contacto</h2>
@@ -61,7 +61,7 @@
 
           <div>
             <h4 class="d-flex align-items-center" style="margin-bottom: 14px; font-size:18px; font-weight: 500; color: #3e3e3e; line-height: 1.55;"><i class="icon icon-heart text-secondary" style="font-size:16px; margin-right: 10px;"></i> <span>Redes Sociales</span></h4>
-            @include('front.partials._social')
+            @include('front.partials.social')
           </div>
 
         </div>

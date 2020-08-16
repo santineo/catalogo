@@ -1,24 +1,20 @@
 <template>
-  <div class="product-article-checkout">
-
-    <div class="product-article-checkout-quantity">
-      <div class="product-article-checkout-quantity-title">{{ label_quantity ? label_quantity : 'Cantidad' }}</div>
-
-        <div class="d-inline-block border">
-          <div class="product-article-checkout-quantity-box">
-            <button type="button" @click.prevent="minus" :disabled="!canMinus">
-              <i class="icon icon-minus"></i>
-            </button>
-            <div class="product-article-checkout-quantity-box-number">{{ orderProduct.quantity }}</div>
-            <button type="button" @click.prevent="plus" :disabled="!canPlus">
-              <i class="icon icon-plus"></i>
-            </button>
-          </div>
-        </div>
-
+  <div>
+    <div class="mb-2">Cantidad <small>(en {{ orderProduct.getUnityType() }})</small></div>
+    <div class="mb-3">
+      <div class="d-flex align-items-center">
+        <button type="button" @click.prevent="minus" :disabled="!canMinus" class="btn btn-primary btn-sm"><i class="fas fa-minus"></i></button>
+        <div class="font-weight-bold mx-3">{{ orderProduct.quantity }}</div>
+        <button type="button" @click.prevent="plus" :disabled="!canPlus" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i></button>
+      </div>
     </div>
 
-    <button type="button" class="btn btn-secondary text-white btn-rounded btn-rounded-lg" :disabled="loading" @click.prevent="pushEvent">{{ label_button ? label_button : 'Agregar Carrito'}}</button>
+    <div class="d-flex align-items-center">
+      <button type="button" class="btn btn-success" :disabled="loading" @click.prevent="pushEvent">{{ buttonLabel }}</button>
+      <div class="p-3 border bg-light d-inline-block ml-auto">
+        Total: <strong>{{ orderProduct.getTotal() }}€</strong>
+      </div>
+    </div>
 
   </div>
 </template>
@@ -26,7 +22,7 @@
 <script>
 import Product from '../classes/Product';
 export default {
-  props: ['product', 'quantity', 'callback', 'action', 'label_quantity', 'label_button'],
+  props: ['product', 'quantity', 'callback', 'action'],
   data(){
     return {
       step: this.product.selling_type == 1 ? 1 : 25,
@@ -38,6 +34,9 @@ export default {
     if(!this.quantity) this.orderProduct.quantity = this.step;
   },
   computed:{
+    buttonLabel(){
+      return this.quantity ? 'Modificar': 'Agregar';
+    },
     canPlus(){
       return this.validateMax();
     },
@@ -71,3 +70,6 @@ export default {
   }
 }
 </script>
+
+<style lang="css">
+</style>

@@ -1,0 +1,60 @@
+.product-list{
+
+  .row{
+    margin: 0 getRem(-33px);
+
+    & > div{
+      padding: 0 getRem(33px); margin-bottom: getRem(60px);
+    }
+  }
+
+  &-card{
+    display: block;
+    max-width: getRem(272px);
+    transition: all 0.3s ease-in-out;
+
+    &:hover{
+      text-decoration: none;
+      transform: scale(1.07);
+    }
+
+    &-image{
+      margin-bottom: getRem(30px);
+      padding-top: 141%;
+
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center center;
+    }
+
+    &-title{
+      margin-bottom: 0;
+
+      color: $dark;
+      font-size: getRem(16px);
+      font-weight: 300;
+      line-height: 1.56;
+    }
+
+    &-price{
+      color: $black;
+      font-size: getRem(20px);
+    }
+
+    &-sale{
+      font-size: getRem(20px);
+      display: flex;
+
+      .sale{
+        color: $red;
+      }
+
+      .original{
+        color: $gray-ce;
+        margin-left: getRem(20px);
+      }
+
+    }
+  }
+
+}

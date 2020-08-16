@@ -1,12 +1,29 @@
 .btn{
+
   &-rounded{
-    background-color: #fff;
-    color: #000;
 
     border: none;
     border-radius: 50px;
     text-transform: uppercase;
     font-weight: 600;
     padding: getRem(15px) getRem(24px);
+    transition: all 0.3s ease-in-out;
+
+    &-lg{
+      font-size: getRem(13px);
+      padding-left: getRem(15px) getRem(53px);
+    }
+  }
+
+  &-black{
+    background-color: $white;
+    color: $black;
+    border: 1px solid $gray-de;
+
+    &:hover{
+      color: $white;
+      background-color: $purple;
+      border-color: $purple;
+    }
   }
 }

@@ -1,0 +1,16 @@
+.select-rounded{
+  display: flex;
+  align-items: center;
+  margin-left: getRem(16px);
+
+  label{
+    font-size: getRem(13px);
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  .custom-select{
+    border-radius: getRem(20px);
+    margin-left: getRem(16px);
+  }
+}

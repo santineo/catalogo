@@ -1,21 +1,37 @@
 @import 'mixins';
+
 // Variables
-@import 'variables';
+@import 'front/variables';
+
+// CUSTOM VARIABLES
+@import 'custom/custom-variables';
+
+// BOOTSTRAP 4
 @import '~bootstrap/scss/bootstrap';
 
+// ICONS
 @import 'fontello';
 
-@import 'front/modules/card';
-@import 'front/modules/navbar';
+// MODULOS
+@import 'front/modules/site-navbar';
+@import 'front/modules/footer';
+@import 'front/modules/social';
 @import 'front/modules/link';
 @import 'front/modules/btn';
-@import 'front/modules/taxCard';
-@import 'front/modules/_tax2';
+@import 'front/modules/select';
+@import 'front/modules/breadcrumb';
+@import 'front/modules/product-list';
+@import 'front/modules/transitions';
 
+
+// LAYOUTS
 @import 'front/layouts/home';
+@import 'front/layouts/products-index';
+@import 'front/layouts/products-show';
 
+// PARA CAMBIOS ESPECIALES
 @import 'custom/custom';
-// Bootstrap
+
 
 body,a,p,div{
   font-family: $font-family-sans-serif;
@@ -48,5 +64,15 @@ body,a,p,div{
   max-width: 1327px;
   @media (max-width: 1366px){
     max-width: 1140px;
+  }
+}
+
+a{
+  color: $black;
+  transition: color 0.4s ease;
+
+  &:hover{
+    text-decoration: none;
+    color: $purple;
   }
 }

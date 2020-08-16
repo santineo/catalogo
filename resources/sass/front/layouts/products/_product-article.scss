@@ -1,0 +1,121 @@
+.product-article{
+  padding: getRem(60px) 0 getRem(108px) 0;
+
+  &-image{
+    max-width: 100%;
+    width: getRem(476px);
+    img{
+      max-width: 100%;
+      width: getRem(476px);
+      max-height: getRem(476px);
+    }
+  }
+
+  &-header{
+    margin-bottom: 15px;
+
+    &-title{
+      font-weight: 300;
+      font-size: getRem(30px);
+      line-height: 1.53;
+      margin-bottom: 0;
+    }
+
+    &-brand{
+      font-size: getRem(12px);
+      span{
+        color: $gray-ce;
+      }
+      a{
+        color: $purple;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-price{
+    font-size: getRem(30px);
+    line-height: 1.53;
+    display: flex;
+
+    .current{
+      color:$black;
+    }
+
+    .offer{
+      color: $red;
+    }
+
+    .original{
+      color: $gray-ce;
+      margin-left: getRem(40px);
+      text-decoration: line-through;
+    }
+  }
+
+  &-description{
+    max-width: getRem(321px);
+    width: 100%;
+    margin: getRem(26px) 0;
+    padding-top: getRem(23px);
+    font-size: getRem(12px);
+    line-height: 1.5;
+    color: $black;
+
+    h3{
+      font-size: getRem(12px);
+      margin-bottom: getRem(4px);
+    }
+
+    p{
+      margin-bottom: 0;
+      color: $gray-a3;
+    }
+  }
+
+  &-checkout{
+    &-quantity{
+      color: $black;
+      font-size: getRem(12px);
+      line-height: 1.5;
+      margin-bottom: getRem(45px);
+
+      &-title{
+        margin-bottom: getRem(15px);
+      }
+
+      &-box{
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        padding: getRem(6px) getRem(11px);
+
+        button{
+          width: getRem(23px);
+          height: getRem(23px);
+          background-color: $black;
+          color: $white;
+          border: none;
+          font-size: getRem(11px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background-color 0.3s ease;
+
+          &:hover{
+            background-color: $purple;
+          }
+
+          &:disabled{
+            color: $gray-de;
+            background-color: transparent;
+          }
+        }
+
+        &-number{
+          padding: 0 getRem(17px);
+        }
+      }
+    }
+  }
+}

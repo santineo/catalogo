@@ -1,0 +1,33 @@
+.footer{
+  padding: getRem(55px) 0;
+
+  &-title{
+    color: $red;
+    font-size: getRem(19px);
+    font-weight:500;
+    margin-bottom: getRem(42px);
+  }
+
+  &-description{
+    color: $gray-80;
+    font-size: getRem(13px);
+    line-height: 2;
+    margin-bottom: getRem(27px)
+  }
+
+  &-list{
+
+    &-title{
+      color: $red;
+      margin-bottom: getRem(30px);
+      font-size: getRem(14px);
+      font-weight:600;
+    }
+
+    ul li{
+      font-size: getRem(13px);
+      font-weight: 500;
+      margin-bottom: getRem(10px);
+    }
+  }
+}

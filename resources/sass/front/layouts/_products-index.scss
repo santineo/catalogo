@@ -1,0 +1,23 @@
+.products-index{
+  padding: getRem(66px) 0;
+
+  &-header{
+    margin-bottom: getRem(60px);
+
+    &-title{
+      margin-bottom: 0;
+      font-size: getRem(34px);
+      font-weight: 300;
+      .count{
+        color: $gray-de;
+      }
+    }
+
+    form{
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+
+  }
+}

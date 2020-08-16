@@ -18,14 +18,14 @@ Vue.component('cart-products', require('./front/CartProducts.vue').default);
 Vue.component('checkout-form', require('./front/CheckoutForm.vue').default);
 Vue.component('contact-form', require('./front/ContactFormComponent.vue').default);
 Vue.component('alert', require('./front/AlertComponent.vue').default);
+Vue.component('nav-search', require('./front/NavSearchComponent.vue').default);
 
 Swiper.use([Navigation, Pagination]);
 
 const init = () => {
   // HOMESCRIPTS
-  if($('#home').length){
-    require('./front/scripts/home');
-  }
+  require('./front/scripts/home');
+  require('./front/scripts/products-index');
 
 };
 

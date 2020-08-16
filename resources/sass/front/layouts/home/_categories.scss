@@ -1,0 +1,35 @@
+.home-categories{
+  padding-top: getRem(80px);
+  padding-bottom: getRem(80px);
+
+  &-card{
+    height: getRem(327px);
+    padding-top: getRem(122px);
+    position: relative;
+    background-color: $black;
+    padding-left: getRem(100px);
+
+    &-image{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      background-size: cover;
+      opacity: 0.6;
+    }
+
+    &-body{
+      position: relative;
+      z-index: 1;
+    }
+
+    &-title{
+      @include fontSize(25px);
+      color: $white;
+      margin-bottom: getRem(40px);
+    }
+
+  }
+}

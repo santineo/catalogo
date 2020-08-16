@@ -4,9 +4,9 @@
 
   <div id="cartIndex">
 
-    <div class="container">
+
       @include('front.partials.nav')
-    </div>
+    
 
     <div class="container">
 

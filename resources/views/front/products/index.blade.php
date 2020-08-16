@@ -3,40 +3,60 @@
 @section('content')
   <div class="bg-white" id="productsIndex">
 
-        <div class="container">
-          @include('front.partials.nav')
-        </div>
+
+    @include('front.partials.nav')
 
 
-    <section style="padding: 66px 0;">
+
+    <section class="products-index">
       <div class="container">
-        <div class="d-flex align-items-center" style="margin-bottom: 60px;">
-          <h2 class="mb-0" style="font-size: 34px; font-weight: 300;">{{ isset($category) && $category ? $category->name : 'Nuestro Productos' }} <span style="color: #d8d8d8">({{ $products->total() }})</span></h2>
-          <div class="ml-auto d-flex align-items-center">
-            <div style="font-size:13px; font-weight: 600;">Mostrar:</div>
-            <select class="custom-select" style="border-radius: 20px; margin-left: 16px;">
-              <option value="30" selected>30</option>
-              <option value="60">60</option>
-              <option value="90">90</option>
-            </select>
+        <div class="products-index-header row">
+
+          <div class="col-8">
+            <h2 class="products-index-header-title">
+              {{ isset($category) && $category ? $category->name : 'Nuestro Productos' }}
+              <span class="count">({{ $products->total() }})</span>
+            </h2>
           </div>
-          <div class="d-flex align-items-center" style="margin-left: 16px;">
-            <div style="font-size:13px; font-weight: 600;">Ordenar:</div>
-            <select class="custom-select" style="border-radius: 20px; margin-left: 16px;">
-              <option value="Popular" selected>Popular</option>
-              <option value="low_price">Menor Precio</option>
-              <option value="bigger_price">Mayor Precio</option>
-            </select>
+
+          <div class="col-4">
+            <form method="get" class="js_productsFilterForms">
+              @if (request('category'))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+              @endif
+              @if (request('brand'))
+                <input type="hidden" name="brand" value="{{ request('brand') }}">
+              @endif
+              <div class="select-rounded">
+                <label>@lang('messages.productsIndex_toShow')</label>
+                <select class="custom-select" name="to_show">
+                  <option value="30" {{ request('to_show') == '30' ? 'selected' : '' }} >30</option>
+                  <option value="60" {{ request('to_show') == '60' ? 'selected' : '' }} >60</option>
+                  <option value="90" {{ request('to_show') == '90' ? 'selected' : '' }} >90</option>
+                </select>
+              </div>
+
+              <div class="select-rounded">
+                <label>@lang('messages.productsIndex_order')</label>
+                <select class="custom-select" name="order">
+                  <option value="popular" {{ request('order') == 'popular' ? 'selected' : '' }}>@lang('messages.productsIndex_popular')</option>
+                  <option value="low_price" {{ request('order') == 'low_price' ? 'selected' : '' }}>@lang('messages.productsIndex_lowPrice')</option>
+                  <option value="bigger_price" {{ request('order') == 'bigger_price' ? 'selected' : '' }}>@lang('messages.productsIndex_biggerPrice')</option>
+                </select>
+              </div>
+
+            </form>
           </div>
         </div>
-        @include('front.partials._productList')
+
+        @include('front.partials.productList')
 
 
-          {{ $products->appends(request()->all())->links() }}
+        {{ $products->appends(request()->all())->links() }}
 
 
-        </div>
-      </section>
+      </div>
+    </section>
 
-    </div>
-  @endsection
+  </div>
+@endsection

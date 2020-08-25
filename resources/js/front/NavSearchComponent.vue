@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a class="navbar-icon search" href="javascript: void(0)" @click.prevent="searching = true"><i class="icon-search"></i><span class="sr-only">{{ label }}</span></a>
+    <a class="navbar-icon navbar-icon-search" href="javascript: void(0)" @click.prevent="searching = true"><i class="icon-search"></i><span class="sr-only">{{ label }}</span></a>
     <transition name="fade">
       <div class="navbar-search" v-show="searching">
         <form action="/productos" id="search" role="search" :aria-label="aria" @submit="onSubmit">

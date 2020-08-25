@@ -24,9 +24,7 @@
         <main>
 
           <div style="min-height: calc(100vh - 170px);">
-            <div class="container">
-              <alert :class="'mb-3'"></alert>
-            </div>
+
             @yield('content')
           </div>
 

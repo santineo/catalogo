@@ -10,3 +10,13 @@ function sessionCartTotal(){
 
   return $price;
 }
+
+function getConfigs($attributes = []){
+  $config = new \stdClass();
+  $DBConfigs = App\Config::whereIn('index', $attributes)->get();
+
+  foreach ($attributes as $key => $index) {
+    $config->{$index} = $DBConfigs->firstWhere('index', $index) ?? new App\Config();
+  }
+  return $config;
+}

@@ -1,0 +1,109 @@
+.cart{
+  padding-top: getRem(30px);
+  padding-bottom: getRem(118px);
+  &-products{
+
+    &-title{
+      margin-bottom: getRem(66px);
+      font-size: getRem(20px);
+      font-weight:600;
+    }
+
+    &-headers{
+      font-size: getRem(14px);
+      color: $gray-ce;
+      margin-bottom: getRem(40px);
+    }
+
+    &-row{
+      margin-bottom: getRem(38px);
+
+      &-image{
+        width: getRem(71px);
+        height: getRem(71px);
+        border-radius: 100%;
+        margin-right: getRem(50px);
+        overflow: hidden;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%
+      }
+
+      &-title{
+        font-size: getRem(16px);font-weight: 600;
+      }
+
+      &-id{
+        color: $gray-ce;
+        font-size:getRem(13px);
+        font-weight: 300;
+      }
+
+      &-quantity{
+        font-size: getRem(16px);
+        line-height: 1.5;
+        color: $black;
+        text-align: center;
+
+        &-box{
+          border-radius: getRem(50px);
+          padding: getRem(13px) getRem(30px);
+          display: inline-block;
+          border: getRem(1px) solid $gray-de;
+          &-minus,
+          &-plus{
+            color: $black;
+            font-size: getRem(20px);
+            border: 0;
+            padding: 0;
+          }
+          &-number{
+            padding: 0 getRem(21px);
+            font-weight: 600;
+          }
+        }
+      }
+
+      &-price{
+        font-weight: 600;
+        font-size: getRem(16px);
+      }
+
+      &-close{
+        font-size: getRem(20px);
+        color: $black;
+      }
+    }
+  }
+
+  // FOOTER
+  &-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-back{
+      font-size: getRem(14px);
+      span{
+        margin-left: getRem(24px);
+        font-weight: 600
+      }
+    }
+
+    &-promocional{
+
+    }
+
+    &-checkout{
+      display: flex;
+      align-items: center;
+      &-total{
+        margin-right: getRem(72px);
+        font-size: getRem(16px);
+        &-number{
+          margin-left: getRem(14px);
+        }
+      }
+    }
+  }
+}

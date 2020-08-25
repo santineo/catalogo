@@ -5,6 +5,12 @@ return [
     // HOME
     'home_ourProducts' => 'Nuestros productos',
 
+    // EMAIL
+    'email_products_title' => 'Ofertas de la semana',
+    'email_products_validDate' => 'Válidas hasta el :date',
+    'email_products_unsuscribeText' => 'Recibís este correo porque estás suscripto a nuestra base. Para desuscribirte, hacé <a href=":url" style="color: #b5b5b5;text-decoration: underline;">click acá</a>. ',
+    'email_products_productLink' => 'Ver producto',
+
     // Navbar
     'navbar_cart' => 'Carrito',
     'navbar_contact' => 'Contacto',
@@ -19,6 +25,11 @@ return [
     'footer_contact' => 'Contacto',
     'footer_phone' => 'Tel:',
     'footer_shop' => 'Tienda',
+
+    // CART
+    'cart_checkout' => 'Tramitar Pedido',
+    'cart_continueBuying' => 'Continuar Comprando',
+    'cart_total' => 'Total:',
 
     // Products index
     'productArticle_addToCart' => 'Agregar al Carrito',
@@ -43,5 +54,6 @@ return [
     'shared_quantity' => 'Cantidad',
     'shared_relatedProducts' => 'Productos relacionados',
     'shared_seeAll' => 'Ver todos',
-    'shared_seeProducts' => 'Ver Productos'
+    'shared_seeProducts' => 'Ver Productos',
+    'shared_total' => 'Total',
 ];

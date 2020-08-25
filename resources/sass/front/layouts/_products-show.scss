@@ -3,6 +3,7 @@
 .products-show{
   &-related{
     padding: getRem(55px) 0 getRem(135px) 0;
+    border-top: 1px solid $gray-de;
 
     &-title{
       font-size: getRem(29px);

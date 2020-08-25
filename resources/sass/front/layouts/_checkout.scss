@@ -1,0 +1,100 @@
+.checkout{
+  padding-top: getRem(66px);
+  padding-bottom: getRem(123px);
+  border-top: getRem(1px) solid $gray-de;
+
+  &-form{
+
+    &-title{
+      text-transform: uppercase; margin-bottom: 51px;font-size: 20px; font-weight: 600;
+    }
+
+    &-subtitle{
+      font-size: 14px; font-weight:600; color: #3e3e3e; margin-bottom: 22px;
+    }
+    .form-group{
+      margin-bottom: 16px;
+    }
+  }
+
+  &-products{
+    position: relative;
+    padding-top:getRem(28px);
+
+    &-sticky{
+      background-color: $gray-f8;
+      padding: getRem(50px) getRem(50px) getRem(32px) getRem(50px);
+    }
+
+    &-title{
+      margin-bottom: getRem(37px);
+      font-size:getRem(18px);
+      font-weight: 600;
+    }
+
+    &-list{
+      margin-bottom: getRem(31px);
+      &-item{
+        display: flex;
+        margin-bottom: getRem(31px);
+        &-image{
+          flex-basis: getRem(57px);
+          width: getRem(57px);
+          height: getRem(57px);
+          border-radius: 100%;
+          overflow: hidden;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: 100%;
+          margin-right: getRem(12px);
+        }
+
+        &-title{
+          font-size: getRem(14px);
+          font-weight: 600;
+          margin-bottom: getRem(5px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+
+        &-id{
+          color: #c4c4c4;
+          font-size:getRem(12px);
+          font-weight: 300;
+        }
+
+        &-price{
+          font-size: getRem(14px);
+          font-weight: 600;
+          margin-bottom: getRem(13px);
+          margin-left: auto;
+        }
+      }
+    }
+
+    &-total{
+      display: flex;
+      align-items: center;
+      border-top: getRem(1px) solid $gray-de;
+      border-bottom: getRem(1px) solid $gray-de;
+      padding: getRem(17px) 0;
+      &-label{
+        font-weight: 300;
+        color: $purple;
+      }
+      &-number{
+        margin-left: auto;
+        font-weight: 600;
+      }
+    }
+
+    &-discount{
+      margin-top: getRem(17px);
+      color: #868686;
+      font-size: getRem(14px);
+    }
+  }
+}

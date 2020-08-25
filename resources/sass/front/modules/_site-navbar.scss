@@ -6,6 +6,12 @@
   margin: 0 auto;
   background-color: $white;
 
+  .container{
+    @media (max-width: 1366px){
+      max-width: 1080px;
+    }
+  }
+
   .navbar{
     padding: getRem(46px) 0;
 
@@ -46,8 +52,8 @@
       top: getRem(-2px);
       margin-left: getRem(15px);
 
-      .cart{
-        &-products-count{
+      &.navbar-icon-cart{
+        .cart-products-count{
           position: absolute;
           border-radius: 100%;
           background-color: $purple;

@@ -1,0 +1,20 @@
+.alert{
+  &-close{
+    position: absolute;
+    top: getRem(10px);
+    right:getRem(10px);
+  }
+
+  &-title{
+    font-size: getRem(20px);
+    font-weight: 600;
+    color: $black;
+    margin-bottom: getRem(5px);
+    line-height: 1;
+  }
+
+  &-message{
+    font-size: getRem(16px);
+    color: $black;
+  }
+}

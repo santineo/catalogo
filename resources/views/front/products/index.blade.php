@@ -20,7 +20,7 @@
           </div>
 
           <div class="col-4">
-            <form method="get" class="js_productsFilterForms">
+            <form method="get" action="{{ route('front.products.index', array_merge(request()->all(), ['page' => 1])) }}" class="js_productsFilterForms">
               @if (request('category'))
                 <input type="hidden" name="category" value="{{ request('category') }}">
               @endif

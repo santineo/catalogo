@@ -50,7 +50,7 @@ class NewslettersController extends Controller
       }
 
       foreach (array_unique($emails) as $key => $email) {
-        Mail::to($email)->send(new NewsletterMail(request()->get('products')), request()->get('subject'));
+        Mail::to($email)->send(new NewsletterMail(request()->get('products')), request()->get('subject'), request()->get('validDate'));
       }
       if(!Mail::failures()) $sended = true;
       return response()->json(compact('sended'), 200);

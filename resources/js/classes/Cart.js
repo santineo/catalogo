@@ -1,6 +1,6 @@
 export default class Cart{
   constructor(){
-    this.loading = false;
+    this.loading = true;
     this.products = [];
     this.token = false;
     this.created = false;

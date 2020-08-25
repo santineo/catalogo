@@ -38,7 +38,7 @@
 
       <nav-search label="@lang('messages.navbar_search_label')" placeholder="@lang('messages.navbar_search_placeholder')" aria="@lang('messages.navbar_search_aria')"></nav-search>
 
-      <a class="navbar-icon cart" href="{{ route('front.cart') }}">
+      <a class="navbar-icon navbar-icon-cart" href="{{ route('front.cart') }}">
         <i class="icon-basket"></i>
         <span class="sr-only">@lang('messages.navbar_cart')</span>
         <div class="cart-products-count" :class="{'more-10': Cart.products.length > 9}" v-if="Cart.products.length">

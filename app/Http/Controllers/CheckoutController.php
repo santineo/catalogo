@@ -36,8 +36,6 @@ class CheckoutController extends Controller
       if(!request('token', false) || !$cart) abort(500);
 
       $order = new Order($this->validateRequest());
-      $order->phone = $order->phone ?: '-';
-      $order->address = $order->address ?: '-';
       $order->status = 1;
       $order->save();
       $order->syncCartProducts($cart);
@@ -56,10 +54,17 @@ class CheckoutController extends Controller
     private function validateRequest()
     {
       return request()->validate([
-        'name' => 'required',
+        'first_name' => 'required',
+        'last_name' => 'required',
         'email' => 'required|email',
-        'phone' => 'required_if:ship_method,2',
-        'address' => 'required_if:ship_method,2',
+        'phone' => 'required',
+        'country' => 'required',
+        'locality' => 'required',
+        'city' => 'required',
+        'zip_code' => 'required',
+        'address_street' => 'required',
+        'address_number' => 'required',
+        'address_dpto' => 'sometimes',
         'additional_info' => 'sometimes',
       ]);
     }

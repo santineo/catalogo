@@ -1,6 +1,7 @@
 export default class Alert {
   constructor(){
     this.show = false;
+    this.canClose = false;
     this.clean();
   }
 

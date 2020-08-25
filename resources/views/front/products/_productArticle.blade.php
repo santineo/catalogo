@@ -1,3 +1,5 @@
+<alert></alert>
+
 <article class="product-article">
   <div class="row">
 

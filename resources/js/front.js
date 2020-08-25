@@ -32,7 +32,8 @@ const init = () => {
 const app = new Vue({
     el: '#front',
     data:{
-      Cart: window.Cart
+      Cart: window.Cart,
+      Alert: window.Alert
     },
     mounted(){
       // SETTIMEOUT FIX WIDTH PROBLEM

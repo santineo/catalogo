@@ -12,7 +12,7 @@ class Product extends Model
 
     protected $guarded = ['uploads'];
 
-    protected $appends = ['price_type', 'image', 'public_path'];
+    protected $appends = ['price_type', 'image', 'public_path', 'formatted_price'];
 
     /**
      * Get the route name
@@ -244,5 +244,15 @@ class Product extends Model
     {
       $unity = 'Unidad' . ($quantity > 1 ? 'es' : '');
       return $this->selling_type == 1 ? $unity : 'grs.';
+    }
+
+    /**
+     * Return if has valid sale
+     *
+     * @return boolean
+     */
+    public function hasSale()
+    {
+      return false;
     }
 }

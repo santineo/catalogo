@@ -22,19 +22,32 @@
 @import 'front/modules/breadcrumb';
 @import 'front/modules/product-list';
 @import 'front/modules/transitions';
+@import 'front/modules/alert';
+@import 'front/modules/form';
 
 
 // LAYOUTS
 @import 'front/layouts/home';
 @import 'front/layouts/products-index';
 @import 'front/layouts/products-show';
+@import 'front/layouts/cart';
+@import 'front/layouts/checkout';
 
 // PARA CAMBIOS ESPECIALES
 @import 'custom/custom';
 
-
+html{
+  font-size: $font-size-base;
+  @media (max-width:1440px){
+    font-size: 0.9rem;
+  }
+  @media (max-width:1366px){
+    font-size: 0.8rem;
+  }
+}
 body,a,p,div{
   font-family: $font-family-sans-serif;
+
 }
 
 .c-red{

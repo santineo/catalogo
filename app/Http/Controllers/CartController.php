@@ -41,8 +41,10 @@ class CartController extends Controller
       $cart = $this->getSessionCart();
       $hasThisProduct = $cart->has($request->product->id);
       if($hasThisProduct){
-        $cart->replace([$request->product->id => $productUpdated]);
-        return $this->storeAndResponse($cart, ['type' => 'warning', 'title' => 'Este articulo ya se encontraba en tu cesta.', 'message' => "<a href=\"{$productUpdated['data']->public_path}\">{$productUpdated['data']->title}</a> se ha actualizado a <strong>{$cart->find($productUpdated['data']->id)->quantity}</strong><small>{$productUpdated['data']->getQuantityLabelUnity($cart->find($productUpdated['data']->id)->quantity)}</small>"]);
+        $cartProduct = $cart->firstWhere('id', $request->product->id);
+        $cartProduct['quantity'] += $request->get('quantity');
+        $cart = $cart->replace([$request->product->id => $cartProduct]);
+        return $this->storeAndResponse($cart, ['type' => 'warning', 'title' => 'Cesta Actualizada', 'message' => "Se ha actualizado <a class='text-primary' href=\"{$cartProduct['data']->public_path}\">{$cartProduct['data']->title}</a> x {$cartProduct['quantity']}."]);
       }else{
         $newProduct = array_merge($request->all(), ['data' => $request->product]);
         $cart = $cart->push($newProduct);

@@ -1,0 +1,8 @@
+.form{
+  &-control-rounded{
+    border-radius: getRem(30px);
+    height: getRem(49px);
+    padding-left: getRem(28px);
+    font-size: getRem(13px);
+  }
+}

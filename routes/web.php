@@ -65,6 +65,10 @@ Route::prefix('administracion')->middleware('auth')->namespace('Admin')->group(f
   Route::post('/configuracion', 'ConfigsController@save')->name('configs.save');
 });
 
+Route::get('/emails/productos', function(){
+  return view('emails.products');
+});
+
 Auth::routes(['register' => false]);
 
 // Route::get('/home', 'HomeController@index')->name('home');

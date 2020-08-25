@@ -13,6 +13,9 @@
         padding-left: 4rem;
         position: relative;
         top: 30%;
+        @media(max-width: 1366px){
+          top: 40%;
+        }
       }
 
       &-background{

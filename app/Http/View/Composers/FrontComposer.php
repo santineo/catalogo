@@ -15,8 +15,7 @@ class FrontComposer
      */
     public function compose(View $view)
     {
-      $configs = new \stdClass();
-      $DBConfigs = getConfigs(['site_name', 'logo', 'email', 'phone', 'description', 'instagram', 'facebook', 'youtube', 'pinterest', 'linkedin']);
+      $configs = getConfigs(['site_name', 'logo', 'email', 'phone', 'description', 'instagram', 'facebook', 'youtube', 'pinterest', 'linkedin']);
 
       $view->with('configs', $configs);
     }

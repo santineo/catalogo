@@ -10,6 +10,8 @@ class GroupClient extends Model
 
     protected $guarded = [];
 
+    protected $with = ['clients'];
+
     /**
      * Get the route name
      *

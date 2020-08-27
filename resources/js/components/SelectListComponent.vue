@@ -7,7 +7,10 @@
       </div>
       <ul v-if="availables.length" class="list-group">
         <li v-for="item in availables" class="list-group-item py-2 d-flex align-items-center justify-content-between" :key="item.id">
-          <div>{{ item.name }}</div>
+          <div>{{ item.name }}
+            <span v-if="groups" class="badge badge-primary ml-3">{{ item.clients.length }}</span>
+            <span v-if="client" v-for="group in item.groups" :key="group.id" class="badge badge-warning ml-1">{{ group.name }}</span>
+          </div>
           <a href="javascript: void(0)" class="text-success" @click.prevent="add(item.id)"><i class="fas fa-plus"></i></a>
         </li>
       </ul>
@@ -21,6 +24,8 @@
         <li v-for="item in reserved" class="list-group-item py-2 d-flex align-items-center justify-content-between" :key="item.id">
           <div>
             {{ item.name }}
+            <span v-if="groups" class="badge badge-primary ml-3">{{ item.clients.length }}</span>
+            <span v-if="client" v-for="group in item.groups" :key="group.id" class="badge badge-warning ml-1">{{ group.name }}</span>
             <input v-if="name" type="hidden" :name="`${name}[]`" :value="item.id">
           </div>
           <a href="javascript: void(0)" class="text-danger" @click.prevent="remove(item.id)"><i class="fas fa-times"></i></a>
@@ -39,7 +44,7 @@
 
 <script>
 export default {
-  props: ['feed_uri', 'name', 'saved', 'label'],
+  props: ['feed_uri', 'name', 'saved', 'label', 'groups', 'client'],
   data(){
     return {
       selected: [],

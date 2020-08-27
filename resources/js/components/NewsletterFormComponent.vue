@@ -15,15 +15,15 @@
       <loader :loading="loading" :text="'Enviando...'" />
     <div class="form-group">
       <label for="subject">Asunto</label>
-      <input type="text" v-model="subject" class="form-control">
+      <input type="text" v-model="subject" name="subject" class="form-control">
     </div>
     <product-list :products="products" class="mt-5"></product-list>
     <hr/>
     <email-list :emails="emails" class="mt-4"></email-list>
     <hr />
-    <select-list :feed_uri="'/administracion/grupos?limited=1'" label="Grupos" @updated="updateGroups"></select-list>
+    <select-list :groups="true" :feed_uri="'/administracion/grupos?limited=1'" label="Grupos" @updated="updateGroups"></select-list>
     <hr />
-    <select-list :feed_uri="'/administracion/clientes'" label="Clientes" @updated="updateClients"></select-list>
+    <select-list :client="true" :feed_uri="'/administracion/clientes'" label="Clientes" @updated="updateClients"></select-list>
     <hr/>
     <div class="text-right mt-4">
       <button type="button" @click="showPreview" :disabled="!products.length" class="btn btn-success btn-lg">Previsualizar</button>

@@ -15,7 +15,7 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        $clients = Client::search(request()->get('term'))->get();
+        $clients = Client::with('groups')->search(request()->get('term'))->get();
         if(request()->ajax()) return response()->json(['list' => $clients], 200);
         return view('admin.clients.index', compact('clients'));
     }
@@ -105,6 +105,7 @@ class ClientsController extends Controller
         'name' => 'required',
         'email' => 'required|email' . (request()->get('id') ? ('|' . request()->get('id') - '|id') : ''),
         'phone' => 'sometimes',
+        'status' => 'required',
         'information' => 'sometimes'
       ]);
     }
